@@ -1,14 +1,20 @@
-/*body {
+body {
 	background-color: lightblue;
 }
 
-.button_type_start {
+.button_type_start,
+.button_type_upload {
 	padding: 15px;
 	border: 0;
 	font-weight: bold;
 	color: #E3E3E4;
 	background-color: #1F1F21;
-}*/
+}
 
-ul { list-style: none; }
-		#recordingslist audio { display: block; margin-bottom: 10px; }
+canvas {
+	display: inline-block;
+	background: #202020;
+	width: 500px;
+	height: 200px;
+	box-shadow: 0px 0px 10px blue;
+}

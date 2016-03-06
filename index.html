@@ -18,46 +18,7 @@
 			<button class="button_type_stop">
 				<i class="fa fa-stop-circle"></i>
 			</button>
-
-			<article class="clip">
-				<audio controls></audio>
-				<p><em>your clip name</em></p>
-				<button>Delete</button>
-			</article>
 		</div> -->
-		<!-- <h1>Recorder.js simple WAV export example</h1>
-
-		<p>Make sure you are using a recent version of Google Chrome.</p>
-		<p>Also before you enable microphone input either plug in headphones or turn the volume down if you want to avoid ear splitting feedback!</p>
-
-		<button onclick="startRecording(this);">record</button>
-		<button onclick="stopRecording(this);" disabled>stop</button>
-
-		<h2>Recordings</h2>
-		<ul id="recordingslist"></ul>
-
-		<h2>Log</h2>
-		<pre id="log"></pre> -->
-		<!-- <h1>Backing</h1>
-    <p><a href="#" id="play">&#9654; Play</a><a href="#" id="stop">&#9724; Stop</a></p>
-
-    <h1>Vocals</h1>
-    <p>Offset <input type="range" min="-500" max="0" value="-150" id="offset" step="25" /> <span id="offsetTotal">-150</span>ms</p>
-    <p><a href="#" id="record">&#9864; Record Start</a><a href="#" id="recordStop">&#9724; Record Stop</a></p>
-    <p><a href="#" id="play2">&#9654; Play</a><a href="#" id="stop2">&#9724; Stop</a></p>
-
-    <h1>Vocals Sync</h1>
-    <p><a href="#" id="recordSync">&#9864; Record Sync Start</a><a href="#" id="recordSyncStop">&#9724; Record Sync Stop</a></p>
-    <p><a href="#" id="playSync">&#9654; Play Sync</a><a href="#" id="stopSync">&#9724; Stop Sync</a></p>
-
-    <h1>Exported</h1>
-    <p><a href="#" id="export">&#10515; Export original</a><a href="#" id="export2">&#10515; Export filled</a></p>
-    <div id="downloads"></div>
-    <div id="player"></div>
-		<script src="scripts/recorder.js"></script>
-	<script src="scripts/script.js"></script>
-	</body>
-</html> -->
 
 
 
@@ -67,58 +28,18 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<title>Audio Recorder</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="styles/styles.css">
 	<script src="scripts/audiodisplay.js"></script>
 	<script src="scripts/recorder.js"></script>
 	<script src="scripts/script.js"></script>
 	<style>
-	html { overflow: hidden; }
-	body {
-		font: 14pt Arial, sans-serif;
-		background: lightgrey;
-		display: flex;
-		flex-direction: column;
-		height: 100vh;
-		width: 100%;
-		margin: 0 0;
-	}
-	canvas {
-		display: inline-block;
-		background: #202020;
-		width: 95%;
-		height: 45%;
-		box-shadow: 0px 0px 10px blue;
-	}
-	#controls {
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		justify-content: space-around;
-		height: 20%;
-		width: 100%;
-	}
-	#record { height: 15vh; }
 	#record.recording {
 		background: red;
 		background: -webkit-radial-gradient(center, ellipse cover, #ff0000 0%,lightgrey 75%,lightgrey 100%,#7db9e8 100%);
 		background: -moz-radial-gradient(center, ellipse cover, #ff0000 0%,lightgrey 75%,lightgrey 100%,#7db9e8 100%);
 		background: radial-gradient(center, ellipse cover, #ff0000 0%,lightgrey 75%,lightgrey 100%,#7db9e8 100%);
 	}
-	#save, #save img { height: 10vh; }
-	#save { opacity: 0.25;}
-	#save[download] { opacity: 1;}
-	#viz {
-		height: 80%;
-		width: 100%;
-		display: flex;
-		flex-direction: column;
-		justify-content: space-around;
-		align-items: center;
-	}
-	@media (orientation: landscape) {
-		body { flex-direction: row;}
-		#controls { flex-direction: column; height: 100%; width: 10%;}
-		#viz { height: 100%; width: 90%;}
-	}
+
 
 	</style>
 </head>
@@ -128,10 +49,14 @@
 		<canvas id="wavedisplay" width="1024" height="500"></canvas>
 	</div>
 	<div id="controls">
+		<button class="button_type_start">START RECORDING</button>
 		<button id="record" onclick="toggleRecording(this);" class="button_type_play">
 			<i class="fa fa-play-circle"></i>
 		</button>
-		<a id="save" href="#"><img src="img/save.svg"></a>
+		<button class="button_type_stop">
+			<i class="fa fa-stop-circle"></i>
+		</button>
+		<button class="button_type_upload" id="save">UPLOAD FILE</button>
 	</div>
 </body>
 </html>
