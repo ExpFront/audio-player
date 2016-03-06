@@ -32,6 +32,7 @@ function init(config) {
 
 function record(inputBuffer) {
 	var viz = document.getElementById("viz");
+	console.log(viz);
 	viz.style.display = "block";
 	recBuffersL.push(inputBuffer[0]);
 	recBuffersR.push(inputBuffer[1]);
