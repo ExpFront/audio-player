@@ -44,9 +44,13 @@ function toggleRecording( e ) {
 				audioRecorder.getBuffers( gotBuffers );
 		} else {
 				// start recording
-				if (!audioRecorder)
-						return;
+				if (!audioRecorder) {
+					return;
+				}
 				e.classList.add("recording");
+				var viz = document.getElementById("viz");
+				console.log(viz);
+				viz.style.display = "block";
 				audioRecorder.clear();
 				audioRecorder.record();
 		}
