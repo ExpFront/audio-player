@@ -1,37 +1,11 @@
-<!-- <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>Audio Player</title>
-		<link rel="icon" href="static/favicon-192x192.png">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href="styles/styles.css">
-	</head>
-	<body>
-		<!-- <div>
-			<button class="button_type_start">START RECORDING</button>
-
-			<button class="button_type_play">
-				<i class="fa fa-play-circle"></i>
-			</button>
-
-			<button class="button_type_stop">
-				<i class="fa fa-stop-circle"></i>
-			</button>
-		</div> -->
-
-
-
 <!doctype html>
 <html>
 <head>
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<title>Audio Recorder</title>
+	<link rel="icon" href="static/favicon-192x192.png">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="styles/styles.css">
-	<script src="scripts/audiodisplay.js"></script>
-	<script src="scripts/recorder.js"></script>
-	<script src="scripts/script.js"></script>
 	<style>
 	#record.recording {
 		background: red;
@@ -56,8 +30,12 @@
 		<button class="button_type_stop">
 			<i class="fa fa-stop-circle"></i>
 		</button>
-		<button class="button_type_upload" id="save">UPLOAD FILE</button>
-		<a id="save" href="#"><img src="img/save.svg"></a>
+		<!-- <button class="button_type_upload" id="save">UPLOAD FILE</button> -->
+		<a href="#" id="save">UPLOAD FILE</button>
+
+		<script src="scripts/audiodisplay.js"></script>
+		<script src="scripts/recorder.js"></script>
+		<script src="scripts/script.js"></script>
 	</div>
 </body>
 </html>
