@@ -9,6 +9,12 @@ body {
 	font-weight: bold;
 	color: #E3E3E4;
 	background-color: #1F1F21;
+	cursor: pointer;
+}
+
+.link_type_upload {
+	color: #E3E3E4;
+	text-decoration: none;
 }
 
 canvas {
