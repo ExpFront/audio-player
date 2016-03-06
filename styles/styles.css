@@ -12,10 +12,18 @@ body {
 	cursor: pointer;
 }
 
+.button_type_upload {
+	padding: 0;
+}
+
 .link_type_upload {
 	padding: 15px;
 	color: #E3E3E4;
 	text-decoration: none;
+}
+
+a {
+	display: block;
 }
 
 canvas {
