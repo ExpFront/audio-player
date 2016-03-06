@@ -13,6 +13,7 @@ body {
 }
 
 .link_type_upload {
+	padding: 15px;
 	color: #E3E3E4;
 	text-decoration: none;
 }
