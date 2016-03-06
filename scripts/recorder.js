@@ -103,7 +103,6 @@
 
 	Recorder.setupDownload = function(blob, filename){
 		var url = (window.URL || window.webkitURL).createObjectURL(blob);
-		console.log(url);
 		var link = document.getElementsByClassName("link_type_upload")[0];
 		link.href = url;
 		link.download = filename || 'output.wav';
