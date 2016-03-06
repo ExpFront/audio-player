@@ -24,7 +24,6 @@
 				<button>Delete</button>
 			</article>
 		</div> -->
-		<video autoplay></video>
 		<!-- <h1>Recorder.js simple WAV export example</h1>
 
 		<p>Make sure you are using a recent version of Google Chrome.</p>
@@ -38,6 +37,23 @@
 
 		<h2>Log</h2>
 		<pre id="log"></pre> -->
+		<h1>Backing</h1>
+    <p><a href="#" id="play">&#9654; Play</a><a href="#" id="stop">&#9724; Stop</a></p>
+
+    <h1>Vocals</h1>
+    <p>Offset <input type="range" min="-500" max="0" value="-150" id="offset" step="25" /> <span id="offsetTotal">-150</span>ms</p>
+    <p><a href="#" id="record">&#9864; Record Start</a><a href="#" id="recordStop">&#9724; Record Stop</a></p>
+    <p><a href="#" id="play2">&#9654; Play</a><a href="#" id="stop2">&#9724; Stop</a></p>
+
+    <h1>Vocals Sync</h1>
+    <p><a href="#" id="recordSync">&#9864; Record Sync Start</a><a href="#" id="recordSyncStop">&#9724; Record Sync Stop</a></p>
+    <p><a href="#" id="playSync">&#9654; Play Sync</a><a href="#" id="stopSync">&#9724; Stop Sync</a></p>
+
+    <h1>Exported</h1>
+    <p><a href="#" id="export">&#10515; Export original</a><a href="#" id="export2">&#10515; Export filled</a></p>
+    <div id="downloads"></div>
+    <div id="player"></div>
+		<script src="scripts/recorder.js"></script>
 	<script src="scripts/script.js"></script>
 	</body>
 </html>
