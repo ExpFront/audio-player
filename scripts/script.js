@@ -177,9 +177,6 @@
 
 
 var module = {
-					 /**
-						* @method init
-						*/
 					 init: function () {
 							 var me = this;
 
