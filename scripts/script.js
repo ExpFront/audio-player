@@ -57,7 +57,7 @@ function startRecording() {
 		return;
 	}
 
-	timeStart = Date.now();
+	timeStart = new Date();
 	btn_record.classList.add('recording');
 	btn_record.style.display = 'none';
 	button_type_play.style.display = 'none';
@@ -103,7 +103,7 @@ function updateAnalysers(time) {
 			analyserContext = canvas.getContext('2d');
 	}
 	var recorder_duration = document.querySelector('.recorder-duration');
-	var duration = (Date.now() - duration) * 0.001;
+	var duration = (Date.now() - timeStart) * 0.001;
 	console.log(duration);
 	recorder_duration.innerHTML = duration;
 	// analyzer draw code here
