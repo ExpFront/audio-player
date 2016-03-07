@@ -15,6 +15,7 @@ var recorder = document.getElementsByClassName('recorder')[0];
 var button_type_record = document.getElementsByClassName('button_type_record')[0];
 var button_type_play = document.getElementsByClassName('button_type_play')[0];
 var button_type_stop = document.getElementsByClassName('button_type_stop')[0];
+var button_type_repeat = document.getElementsByClassName('button_type_repeat')[0];
 
 function saveAudio() {
 		audioRecorder.exportWAV( doneEncoding );
@@ -178,4 +179,5 @@ function initAudio() {
 window.addEventListener('load', initAudio);
 
 button_type_record.addEventListener('click', startRecording);
+button_type_repeat.addEventListener('click', startRecording);
 button_type_stop.addEventListener('click', stopRecording);
