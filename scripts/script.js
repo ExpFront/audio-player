@@ -79,10 +79,10 @@ function updateAnalysers(time) {
 		}
 
 		// analyzer draw code here
-		var canvas = document.getElementById( 'wavedisplay' );
+		{var canvas = document.getElementById( 'wavedisplay' );
 
 		drawBuffer( canvas.width, canvas.height, canvas.getContext('2d'), buffers[0] );
-
+	}
 		rafID = window.requestAnimationFrame( updateAnalysers );
 }
 
