@@ -11,7 +11,7 @@ var canvasWidth, canvasHeight;
 var recIndex = 0;
 
 // Variables
-var recorder = document.getElementsByClassName('recorder')[0];
+var viz = document.getElementById("viz");
 var button_type_start = document.getElementsByClassName('button_type_start')[0];
 
 
@@ -22,7 +22,7 @@ function saveAudio() {
 }
 
 function gotBuffers( buffers ) {
-		var canvas = document.getElementById( 'wavedisplay' );
+		var canvas = document.getElementById( "wavedisplay" );
 
 		drawBuffer( canvas.width, canvas.height, canvas.getContext('2d'), buffers[0] );
 
@@ -32,23 +32,24 @@ function gotBuffers( buffers ) {
 }
 
 function doneEncoding( blob ) {
-		Recorder.setupDownload( blob, 'myRecording' + ((recIndex < 10) ? '0' : '') + recIndex + '.wav' );
+		Recorder.setupDownload( blob, "myRecording" + ((recIndex < 10)? "0" : "") + recIndex + ".wav" );
 		recIndex++;
 }
 
 function toggleRecording( e ) {
-		if (button_type_start.classList.contains('recording')) {
+		if (button_type_start.classList.contains("recording")) {
 				// stop recording
 				audioRecorder.stop();
-				button_type_start.classList.remove('recording');
+				button_type_start.classList.remove("recording");
 				audioRecorder.getBuffers( gotBuffers );
 		} else {
 				// start recording
 				if (!audioRecorder) {
 					return;
 				}
-				button_type_start.classList.add('recording');
-				recorder.style.display = 'block';
+				button_type_start.classList.add("recording");
+
+				viz.style.display = "block";
 				audioRecorder.clear();
 				audioRecorder.record();
 		}
@@ -71,7 +72,7 @@ function cancelAnalyserUpdates() {
 
 function updateAnalysers(time) {
 		if (!analyserContext) {
-				var canvas = document.getElementById('analyser');
+				var canvas = document.getElementById("analyser");
 				canvasWidth = canvas.width;
 				canvasHeight = canvas.height;
 				analyserContext = canvas.getContext('2d');
@@ -100,7 +101,7 @@ function updateAnalysers(time) {
 							magnitude += freqByteData[offset + j];
 						magnitude = magnitude / multiplier;
 						var magnitude2 = freqByteData[i * multiplier];
-						analyserContext.fillStyle = 'hsl( ' + Math.round((i * 360)/numBars) + ', 100%, 50%)';
+						analyserContext.fillStyle = "hsl( " + Math.round((i * 360)/numBars) + ", 100%, 50%)";
 						analyserContext.fillRect(i * SPACING, canvasHeight, BAR_WIDTH, -magnitude);
 				}
 		}
@@ -154,14 +155,14 @@ function initAudio() {
 
 		navigator.getUserMedia(
 				{
-						'audio': {
-								'mandatory': {
-										'googEchoCancellation': 'false',
-										'googAutoGainControl': 'false',
-										'googNoiseSuppression': 'false',
-										'googHighpassFilter': 'false'
+						"audio": {
+								"mandatory": {
+										"googEchoCancellation": "false",
+										"googAutoGainControl": "false",
+										"googNoiseSuppression": "false",
+										"googHighpassFilter": "false"
 								},
-								'optional': []
+								"optional": []
 						},
 				}, gotStream, function(e) {
 						alert('Error getting audio');
