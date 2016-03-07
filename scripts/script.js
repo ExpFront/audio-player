@@ -12,7 +12,6 @@ var recIndex = 0;
 
 // Elements
 var recorder_body = document.querySelector('.recorder-body');
-console.log(recorder_body);
 var recorder_footer = document.querySelector('.recorder-footer');
 var btn_record = document.querySelector('.btn-record');
 var button_type_play = document.getElementsByClassName('button_type_play')[0];
@@ -103,9 +102,8 @@ function updateAnalysers(time) {
 			analyserContext = canvas.getContext('2d');
 	}
 	var recorder_duration = document.querySelector('.recorder-duration');
-	var date = Date.now();
+	var date = new Date;
 	var duration = (date.getMinutes() - timeStart.getMinutes()) * 0.001;
-	console.log(duration);
 	recorder_duration.innerHTML = duration;
 	// analyzer draw code here
 	{
