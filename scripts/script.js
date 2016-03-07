@@ -103,7 +103,7 @@ function updateAnalysers(time) {
 	}
 	var recorder_duration = document.querySelector('.recorder-duration');
 	var date = new Date();
-	console.log(date.getMinutes());
+	console.log(date.getSeconds());
 	var duration = (date - timeStart);
 	recorder_duration.innerHTML = duration;
 	// analyzer draw code here
