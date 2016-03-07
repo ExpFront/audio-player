@@ -61,13 +61,23 @@ function stopRecording() {
 	button_type_stop.style.display = 'none';
 	button_type_play.style.display = 'block';
 	audioRecorder.getBuffers(gotBuffers);
+	audioRecorder.getBufferCallback(gotBuffers);
 }
 
-function playSound() {
-	oscillator = AudioContext.createOscillator();
-
-	oscillator.connect(Audiocontext.destination);
-	oscillator.noteOn(0);
+function playSound(data, callback) {
+		// create audio node and play buffer
+		var me = this,
+				source = this.context.createBufferSource(),
+				gainNode = this.context.createGain();
+		if (!source.start) { source.start = source.noteOn; }
+		if (!source.stop) { source.stop = source.noteOff; }
+		source.connect(gainNode);
+		gainNode.connect(this.context.destination);
+		source.buffer = data;
+		source.loop = true;
+		source.startTime = this.context.currentTime; // important for later!
+		source.start(0);
+		return source;
 }
 
 function convertToMono( input ) {
@@ -171,21 +181,33 @@ function initAudio() {
 						navigator.requestAnimationFrame = navigator.webkitRequestAnimationFrame || navigator.mozRequestAnimationFrame;
 
 		navigator.getUserMedia(
-				{
-						'audio': {
-								'mandatory': {
-										'googEchoCancellation': 'false',
-										'googAutoGainControl': 'false',
-										'googNoiseSuppression': 'false',
-										'googHighpassFilter': 'false'
-								},
-								'optional': []
-						},
-				}, gotStream, function(e) {
-						alert('Error getting audio');
-						console.log(e);
-				});
+	{
+			'audio': {
+					'mandatory': {
+							'googEchoCancellation': 'false',
+							'googAutoGainControl': 'false',
+							'googNoiseSuppression': 'false',
+							'googHighpassFilter': 'false'
+					},
+					'optional': []
+			},
+	}, gotStream, function(e) {
+			alert('Error getting audio');
+			console.log(e);
+	});
 }
+
+function getBufferCallback( buffers ) {
+		var newSource = audioContext.createBufferSource();
+		var newBuffer = audioContext.createBuffer( 2, buffers[0].length, audioContext.sampleRate );
+		newBuffer.getChannelData(0).set(buffers[0]);
+		newBuffer.getChannelData(1).set(buffers[1]);
+		newSource.buffer = newBuffer;
+
+		newSource.connect( audioContext.destination );
+		newSource.start(0);
+}
+
 
 window.addEventListener('load', initAudio);
 
