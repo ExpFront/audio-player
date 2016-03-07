@@ -61,7 +61,7 @@ function stopRecording() {
 	button_type_stop.style.display = 'none';
 	button_type_play.style.display = 'block';
 	audioRecorder.getBuffers(gotBuffers);
-	audioRecorder.getBufferCallback(gotBuffers);
+	audioRecorder.getBuffers(getBufferCallback);
 }
 
 function playSound(data, callback) {
