@@ -51,6 +51,7 @@ function toggleRecording( e ) {
 				recorder.style.display = 'block';
 				audioRecorder.clear();
 				audioRecorder.record();
+				audioRecorder.getBuffers( gotBuffers );
 		}
 }
 
