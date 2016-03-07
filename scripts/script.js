@@ -104,7 +104,7 @@ function updateAnalysers(time) {
 	var recorder_duration = document.querySelector('.recorder-duration');
 	var date = new Date();
 	console.log(date);
-	var duration = (date - timeStart) * 0.01;
+	var duration = (date - timeStart) * 0.1;
 	recorder_duration.innerHTML = duration;
 	// analyzer draw code here
 	{
