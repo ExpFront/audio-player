@@ -12,9 +12,9 @@ var recIndex = 0;
 
 // Elements
 var recorder = document.getElementsByClassName('recorder')[0];
-var button_type_start = document.getElementsByClassName('button_type_start')[0];
-var button_type_stop = document.getElementsByClassName('button_type_stop')[0];
+var button_type_record = document.getElementsByClassName('button_type_record')[0];
 var button_type_play = document.getElementsByClassName('button_type_play')[0];
+var button_type_stop = document.getElementsByClassName('button_type_stop')[0];
 
 function saveAudio() {
 		audioRecorder.exportWAV( doneEncoding );
@@ -42,8 +42,8 @@ function startRecording() {
 		return;
 	}
 
-	button_type_start.classList.add('recording');
-	button_type_start.style.display = 'none';
+	button_type_record.classList.add('recording');
+	button_type_record.style.display = 'none';
 	button_type_stop.style.display = 'block';
 	recorder.style.display = 'block';
 	audioRecorder.clear();
@@ -52,7 +52,7 @@ function startRecording() {
 
 function stopRecording() {
 	audioRecorder.stop();
-	button_type_start.classList.remove('recording');
+	button_type_record.classList.remove('recording');
 	audioRecorder.getBuffers(gotBuffers);
 }
 
@@ -175,5 +175,5 @@ function initAudio() {
 
 window.addEventListener('load', initAudio);
 
-button_type_start.addEventListener('click', startRecording);
+button_type_record.addEventListener('click', startRecording);
 button_type_stop.addEventListener('click', stopRecording);
