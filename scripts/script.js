@@ -57,7 +57,7 @@ function startRecording() {
 		return;
 	}
 
-	timeStart = new Date();
+	timeStart = Date.now();
 	btn_record.classList.add('recording');
 	btn_record.style.display = 'none';
 	button_type_play.style.display = 'none';
