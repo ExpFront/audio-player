@@ -11,7 +11,8 @@ var canvasWidth, canvasHeight;
 var recIndex = 0;
 
 // Elements
-var recorder = document.getElementsByClassName('recorder')[0];
+var recorder_body = document.querySelector('.recorder-body');
+var recorder_footer = document.querySelector('.recorder-footer');
 var btn_record = document.querySelector('.btn-record');
 var button_type_play = document.getElementsByClassName('button_type_play')[0];
 var button_type_stop = document.getElementsByClassName('button_type_stop')[0];
@@ -47,7 +48,8 @@ function startRecording() {
 	btn_record.style.display = 'none';
 	button_type_play.style.display = 'none';
 	button_type_stop.style.display = 'block';
-	recorder.style.display = 'block';
+	recorder_body.style.display = 'block';
+	recorder_footer.style.display = 'block';
 	audioRecorder.clear();
 	audioRecorder.record();
 }

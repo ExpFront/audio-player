@@ -11,20 +11,15 @@ body {
 
 .recorder {
 	width: 300px;
-	display: none;
 }
 
 .recorder__body {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
+	display: none;
 	background-color: #F8F8F8;
 }
 
 .recorder__footer {
-	display: flex;
-	justify-content: space-between;
-
+	display: none;
 }
 
 .recorder__controls {
