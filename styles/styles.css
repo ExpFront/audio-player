@@ -42,6 +42,13 @@ body {
 	cursor: pointer;
 }
 
+.button_type_play,
+.button_type_stop {
+	background-color: none;
+	border: 0;
+	outline: none;
+}
+
 .button_type_upload {
 	padding: 0;
 }
