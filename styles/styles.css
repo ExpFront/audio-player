@@ -18,8 +18,12 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-
 	background-color: #F8F8F8;
+}
+
+.recorder_footer {
+	display: flex;
+	align-items: center;
 }
 
 .recorder__controls {
