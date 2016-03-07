@@ -99,10 +99,10 @@ function updateAnalysers(time) {
 						var offset = Math.floor( i * multiplier );
 						// gotta sum/average the block, or we miss narrow-bandwidth spikes
 						for (var j = 0; j< multiplier; j++)
-								magnitude += freqByteData[offset + j];
+							magnitude += freqByteData[offset + j];
 						magnitude = magnitude / multiplier;
 						var magnitude2 = freqByteData[i * multiplier];
-						analyserContext.fillStyle = "hsl( " + Math.round((i*360)/numBars) + ", 100%, 50%)";
+						analyserContext.fillStyle = "hsl( " + Math.round((i * 360)/numBars) + ", 100%, 50%)";
 						analyserContext.fillRect(i * SPACING, canvasHeight, BAR_WIDTH, -magnitude);
 				}
 		}
@@ -174,4 +174,4 @@ function initAudio() {
 window.addEventListener('load', initAudio );
 
 var button_type_start = document.getElementsByClassName('button_type_start')[0];
-button_type_start.addEventListener('click', toggleRecording);
+button_type_start.addEventListener('click', toggleRecording(this));
