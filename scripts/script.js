@@ -13,7 +13,7 @@ var recIndex = 0;
 // Variables
 var recorder = document.getElementsByClassName('recorder')[0];
 var button_type_start = document.getElementsByClassName('button_type_start')[0];
-
+var button_type_stop = document.getElementsByClassName('button_type_stop')[0];
 
 function saveAudio() {
 		audioRecorder.exportWAV( doneEncoding );
@@ -36,22 +36,21 @@ function doneEncoding( blob ) {
 		recIndex++;
 }
 
-function toggleRecording( e ) {
-		if (button_type_start.classList.contains('recording')) {
-				// stop recording
-				audioRecorder.stop();
-				button_type_start.classList.remove('recording');
-				audioRecorder.getBuffers( gotBuffers );
-		} else {
-				// start recording
-				if (!audioRecorder) {
-					return;
-				}
-				button_type_start.classList.add('recording');
-				recorder.style.display = 'block';
-				audioRecorder.clear();
-				audioRecorder.record();
-		}
+function startRecording() {
+	if (!audioRecorder) {
+		return;
+	}
+
+	button_type_start.classList.add('recording');
+	recorder.style.display = 'block';
+	audioRecorder.clear();
+	audioRecorder.record();
+}
+
+function stopRecording() {
+	audioRecorder.stop();
+	button_type_start.classList.remove('recording');
+	audioRecorder.getBuffers(gotBuffers);
 }
 
 function convertToMono( input ) {
@@ -96,8 +95,10 @@ function updateAnalysers(time) {
 						var magnitude = 0;
 						var offset = Math.floor( i * multiplier );
 						// gotta sum/average the block, or we miss narrow-bandwidth spikes
-						for (var j = 0; j< multiplier; j++)
+						for (var j = 0; j < multiplier; j++) {
 							magnitude += freqByteData[offset + j];
+						}
+
 						magnitude = magnitude / multiplier;
 						var magnitude2 = freqByteData[i * multiplier];
 						analyserContext.fillStyle = 'hsl( ' + Math.round((i * 360)/numBars) + ', 100%, 50%)';
@@ -171,4 +172,5 @@ function initAudio() {
 
 window.addEventListener('load', initAudio);
 
-button_type_start.addEventListener('click', toggleRecording);
+button_type_start.addEventListener('click', startRecording);
+button_type_stop.addEventListener('click', stopRecording);
