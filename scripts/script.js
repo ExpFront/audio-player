@@ -17,7 +17,7 @@ var btn_record = document.querySelector('.btn-record');
 var button_type_play = document.getElementsByClassName('button_type_play')[0];
 var button_type_stop = document.getElementsByClassName('button_type_stop')[0];
 var btn_repeat = document.querySelector('.btn-repeat');
-var timeStart = 0;
+var timeStart;
 
 function saveAudio() {
 		audioRecorder.exportWAV( doneEncoding );
