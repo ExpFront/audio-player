@@ -12,7 +12,7 @@ var recIndex = 0;
 
 // Elements
 var recorder = document.getElementsByClassName('recorder')[0];
-var btn_record = document.querySelector('btn-record');
+var btn_record = document.querySelector('.btn-record');
 console.log(btn_record);
 var button_type_play = document.getElementsByClassName('button_type_play')[0];
 var button_type_stop = document.getElementsByClassName('button_type_stop')[0];
