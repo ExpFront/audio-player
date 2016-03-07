@@ -26,7 +26,9 @@ body {
 	border-left: 1px solid #DCDCDC;
 }
 
-.btn-record {
+.btn-record,
+.btn-repeat,
+.btn-upload {
 	padding: 15px 25px;
 	border: 0;
 	font-weight: bold;
