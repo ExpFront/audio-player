@@ -18,7 +18,7 @@ var btn_record = document.querySelector('.btn-record');
 var button_type_play = document.getElementsByClassName('button_type_play')[0];
 var button_type_stop = document.getElementsByClassName('button_type_stop')[0];
 var btn_repeat = document.querySelector('.btn-repeat');
-var duration = 0;
+var timeStart = 0;
 
 function saveAudio() {
 		audioRecorder.exportWAV( doneEncoding );
@@ -56,7 +56,8 @@ function startRecording() {
 	if (!audioRecorder) {
 		return;
 	}
-	duration = new Date();
+
+	timeStart = new Date();
 	btn_record.classList.add('recording');
 	btn_record.style.display = 'none';
 	button_type_play.style.display = 'none';
@@ -102,8 +103,8 @@ function updateAnalysers(time) {
 			analyserContext = canvas.getContext('2d');
 	}
 	var recorder_duration = document.querySelector('.recorder-duration');
-	var date = new Date();
-	recorder_duration.innerHTML = date - duration;
+	var duration = (new Date - duration) * 0.001
+	recorder_duration.innerHTML = duration;
 	// analyzer draw code here
 	{
 		var SPACING = 3;
