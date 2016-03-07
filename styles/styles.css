@@ -2,6 +2,10 @@ body {
 	background-color: lightblue;
 }
 
+.recorder {
+	display: none;
+}
+
 .button_type_start,
 .button_type_upload {
 	padding: 15px;

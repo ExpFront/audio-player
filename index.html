@@ -19,23 +19,24 @@
 </head>
 <body>
 	<button class="button_type_start">START RECORDING</button>
-	<div id="viz">
-		<canvas id="analyser" width="1024" height="500"></canvas>
-		<canvas id="wavedisplay" width="1024" height="500"></canvas>
-	</div>
-	<div id="controls">
-		<button  class="button_type_play">
-			<i class="fa fa-play-circle"></i>
-		</button>
-		<button class="button_type_stop">
-			<i class="fa fa-stop-circle"></i>
-		</button>
-		<button class="button_type_upload">
-			<a class="link_type_upload" href="#">UPLOAD FILE</a>
-		</button>
+	<div class="recorder">
+		<div id="viz">
+			<canvas id="analyser" width="1024" height="500"></canvas>
+			<canvas id="wavedisplay" width="1024" height="500"></canvas>
+		</div>
+		<div id="controls">
+			<button  class="button_type_play">
+				<i class="fa fa-play-circle"></i>
+			</button>
+			<button class="button_type_stop">
+				<i class="fa fa-stop-circle"></i>
+			</button>
+			<button class="button_type_upload">
+				<a class="link_type_upload" href="#">UPLOAD FILE</a>
+			</button>
+		</div>
 		<script src="scripts/audiodisplay.js"></script>
 		<script src="scripts/recorder.js"></script>
 		<script src="scripts/script.js"></script>
-	</div>
 </body>
 </html>

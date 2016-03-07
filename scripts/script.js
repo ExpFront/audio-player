@@ -11,7 +11,7 @@ var canvasWidth, canvasHeight;
 var recIndex = 0;
 
 // Variables
-var viz = document.getElementById('viz');
+var recorder = document.getElementsByClassName('recorder')[0];
 var button_type_start = document.getElementsByClassName('button_type_start')[0];
 
 
@@ -48,8 +48,7 @@ function toggleRecording( e ) {
 					return;
 				}
 				button_type_start.classList.add('recording');
-
-				viz.style.display = 'block';
+				recorder.style.display = 'block';
 				audioRecorder.clear();
 				audioRecorder.record();
 		}
