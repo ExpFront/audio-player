@@ -10,7 +10,7 @@ var analyserContext = null;
 var canvasWidth, canvasHeight;
 var recIndex = 0;
 
-// Variables
+// Elements
 var recorder = document.getElementsByClassName('recorder')[0];
 var button_type_start = document.getElementsByClassName('button_type_start')[0];
 var button_type_stop = document.getElementsByClassName('button_type_stop')[0];
@@ -42,6 +42,7 @@ function startRecording() {
 	}
 
 	button_type_start.classList.add('recording');
+	button_type_start.style.display = 'none';
 	recorder.style.display = 'block';
 	audioRecorder.clear();
 	audioRecorder.record();
