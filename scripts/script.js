@@ -61,23 +61,10 @@ function stopRecording() {
 	button_type_stop.style.display = 'none';
 	button_type_play.style.display = 'block';
 	audioRecorder.getBuffers(gotBuffers);
-	audioRecorder.getBuffers(getBufferCallback);
 }
 
-function playSound(data, callback) {
-		// create audio node and play buffer
-		var me = this,
-				source = this.context.createBufferSource(),
-				gainNode = this.context.createGain();
-		if (!source.start) { source.start = source.noteOn; }
-		if (!source.stop) { source.stop = source.noteOff; }
-		source.connect(gainNode);
-		gainNode.connect(this.context.destination);
-		source.buffer = data;
-		source.loop = true;
-		source.startTime = this.context.currentTime; // important for later!
-		source.start(0);
-		return source;
+function playSound() {
+	audioRecorder.getBuffers(getBufferCallback);
 }
 
 function convertToMono( input ) {
@@ -214,4 +201,4 @@ window.addEventListener('load', initAudio);
 btn_record.addEventListener('click', startRecording);
 btn_repeat.addEventListener('click', startRecording);
 button_type_stop.addEventListener('click', stopRecording);
-button_type_play.addEventListener('click', playSound)
+button_type_play.addEventListener('click', playSound);
