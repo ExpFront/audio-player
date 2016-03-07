@@ -63,6 +63,13 @@ function stopRecording() {
 	audioRecorder.getBuffers(gotBuffers);
 }
 
+function playSound() {
+	oscillator = context.createOscillator();
+
+	oscillator.connect(context.destination;
+	oscillator.noteOn(0);
+}
+
 function convertToMono( input ) {
 		var splitter = audioContext.createChannelSplitter(2);
 		var merger = audioContext.createChannelMerger(2);
