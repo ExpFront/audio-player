@@ -21,9 +21,9 @@ body {
 	background-color: #F8F8F8;
 }
 
-.recorder_footer {
+.recorder__footer {
 	display: flex;
-	align-items: center;
+	justify-content: center;
 }
 
 .recorder__controls {
