@@ -64,9 +64,9 @@ function stopRecording() {
 }
 
 function playSound() {
-	oscillator = context.createOscillator();
+	oscillator = AudioContext.createOscillator();
 
-	oscillator.connect(context.destination);
+	oscillator.connect(Audiocontext.destination);
 	oscillator.noteOn(0);
 }
 
