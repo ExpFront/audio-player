@@ -44,7 +44,7 @@ body {
 
 .button_type_play,
 .button_type_stop {
-	background-color: none;
+	background: none;
 	border: 0;
 	outline: none;
 }
