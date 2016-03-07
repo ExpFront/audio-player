@@ -5,38 +5,50 @@
 	<title>Audio Recorder</title>
 	<link rel="icon" href="static/favicon-192x192.png">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css" integrity="sha384-XXXXXXXX" crossorigin="anonymous">
+	<link rel="stylesheet" href="styles/bootstrap.min.css">
 	<link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
-	<div class="content">
-		<button type="button" class="btn btn-primary">Primary</button>
-		<button class="button_type_record">START RECORDING</button>
-		<div class="recorder">
-			<div class="recorder__body">
-				<div class="recorder__controls">
-					<button class="button_type_play">
-						<i class="fa fa-play-circle"></i>
-					</button>
-					<button class="button_type_stop">
-						<i class="fa fa-stop-circle"></i>
-					</button>
-				</div>
-				<div class="recorder__diagram">
-					<canvas id="analyser" width="1024" height="500"></canvas>
-					<canvas id="wavedisplay" width="1024" height="500"></canvas>
-				</div>
-			</div>
-			<div class="recorder__footer">
-				<button class="button_type_repeat">
-					START OVER
-				</button>
-				<button class="button_type_upload">
-					<a class="link_type_upload" href="#">UPLOAD FILE</a>
-				</button>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-4 col-xs-offset-4 text-xs-center">
+				<button type="button" class="btn btn-primary btn-record">START RECORDING</button>
 			</div>
 		</div>
 	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-4 col-xs-offset-4 text-xs-center">
+
+				<div class="recorder">
+					<div class="recorder__body">
+						<div class="recorder__controls">
+							<button class="button_type_play">
+								<i class="fa fa-play-circle"></i>
+							</button>
+							<button class="button_type_stop">
+								<i class="fa fa-stop-circle"></i>
+							</button>
+						</div>
+						<div class="recorder__diagram">
+							<canvas id="analyser" width="1024" height="500"></canvas>
+							<canvas id="wavedisplay" width="1024" height="500"></canvas>
+						</div>
+					</div>
+					<div class="recorder__footer">
+						<button class="button_type_repeat">
+							START OVER
+						</button>
+						<button class="button_type_upload">
+							<a class="link_type_upload" href="#">UPLOAD FILE</a>
+						</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
 	<script src="scripts/audiodisplay.js"></script>
 	<script src="scripts/recorder.js"></script>
 	<script src="scripts/script.js"></script>
