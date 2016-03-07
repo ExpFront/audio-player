@@ -1,18 +1,3 @@
-body {
-	background-color: lightblue;
-}
-
-.content {
-	padding-top: 50px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
-
-.recorder {
-	width: 300px;
-}
-
 .recorder-body {
 	display: none;
 	background-color: #F8F8F8;
