@@ -45,7 +45,7 @@ function startRecording() {
 
 	button_type_record.classList.add('recording');
 	button_type_record.style.display = 'none';
-	button_type_stop.style.display = 'block';
+	button_type_play.style.display = 'none';
 	recorder.style.display = 'block';
 	audioRecorder.clear();
 	audioRecorder.record();
