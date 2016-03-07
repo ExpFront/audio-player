@@ -51,7 +51,6 @@ function toggleRecording( e ) {
 				recorder.style.display = 'block';
 				audioRecorder.clear();
 				audioRecorder.record();
-				drawBuffer( canvas.width, canvas.height, canvas.getContext('2d'), buffers[0] );
 		}
 }
 
