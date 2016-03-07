@@ -23,7 +23,8 @@ body {
 
 .recorder__footer {
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
+
 }
 
 .recorder__controls {
