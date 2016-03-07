@@ -2,6 +2,11 @@ body {
 	background-color: lightblue;
 }
 
+.content {
+	padding-top: 50px;
+	text-align: center;
+}
+
 .recorder {
 	display: none;
 }
