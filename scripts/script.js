@@ -53,6 +53,8 @@ function startRecording() {
 function stopRecording() {
 	audioRecorder.stop();
 	button_type_record.classList.remove('recording');
+	button_type_stop.style.display = 'none';
+	button_type_play.style.display = 'block';
 	audioRecorder.getBuffers(gotBuffers);
 }
 
