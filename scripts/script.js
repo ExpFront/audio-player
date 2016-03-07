@@ -10,10 +10,10 @@ var analyserContext = null;
 var canvasWidth, canvasHeight;
 var recIndex = 0;
 
-/* TODO:
-- offer mono option
-- "Monitor input" switch
-*/
+// Variables
+var viz = document.getElementById("viz");
+var button_type_start = document.getElementsByClassName('button_type_start')[0];
+
 
 function saveAudio() {
 		audioRecorder.exportWAV( doneEncoding );
@@ -37,19 +37,18 @@ function doneEncoding( blob ) {
 }
 
 function toggleRecording( e ) {
-		if (e.classList.contains("recording")) {
+		if (button_type_start.classList.contains("recording")) {
 				// stop recording
 				audioRecorder.stop();
-				e.classList.remove("recording");
+				button_type_start.classList.remove("recording");
 				audioRecorder.getBuffers( gotBuffers );
 		} else {
 				// start recording
 				if (!audioRecorder) {
 					return;
 				}
-				e.classList.add("recording");
-				var viz = document.getElementById("viz");
-				console.log(viz);
+				button_type_start.classList.add("recording");
+
 				viz.style.display = "block";
 				audioRecorder.clear();
 				audioRecorder.record();
@@ -171,7 +170,6 @@ function initAudio() {
 				});
 }
 
-window.addEventListener('load', initAudio );
+window.addEventListener('load', initAudio);
 
-var button_type_start = document.getElementsByClassName('button_type_start')[0];
-button_type_start.addEventListener('click', toggleRecording(button_type_start));
+button_type_start.addEventListener('click', toggleRecording);
