@@ -21,17 +21,21 @@
 	<div class="content">
 		<button class="button_type_start">START RECORDING</button>
 		<div class="recorder">
-			<div id="viz">
-				<canvas id="analyser" width="1024" height="500"></canvas>
-				<canvas id="wavedisplay" width="1024" height="500"></canvas>
+			<div class="recorder__body">
+				<div class="recorder__controls" id="controls">
+					<button  class="button_type_play">
+						<i class="fa fa-play-circle"></i>
+					</button>
+					<button class="button_type_stop">
+						<i class="fa fa-stop-circle"></i>
+					</button>
+				</div>
+				<div id="viz">
+					<canvas id="analyser" width="1024" height="500"></canvas>
+					<canvas id="wavedisplay" width="1024" height="500"></canvas>
+				</div>
 			</div>
-			<div id="controls">
-				<button  class="button_type_play">
-					<i class="fa fa-play-circle"></i>
-				</button>
-				<button class="button_type_stop">
-					<i class="fa fa-stop-circle"></i>
-				</button>
+			<div class="recorder__footer">
 				<button class="button_type_upload">
 					<a class="link_type_upload" href="#">UPLOAD FILE</a>
 				</button>
