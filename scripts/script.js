@@ -173,5 +173,5 @@ function initAudio() {
 
 window.addEventListener('load', initAudio );
 
-var viz = document.getElementsByClassName('viz')[0];
-viz.addEventListener('click', toggleRecording);
+var button_type_start = document.getElementsByClassName('button_type_start')[0];
+button_type_start.addEventListener('click', toggleRecording);
