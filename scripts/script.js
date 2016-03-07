@@ -174,4 +174,4 @@ function initAudio() {
 window.addEventListener('load', initAudio );
 
 var button_type_start = document.getElementsByClassName('button_type_start')[0];
-button_type_start.addEventListener('click', toggleRecording(this));
+button_type_start.addEventListener('click', toggleRecording(button_type_start));
