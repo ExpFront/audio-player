@@ -13,12 +13,12 @@ body {
 	width: 300px;
 }
 
-.recorder__body {
+.recorder-body {
 	display: none;
 	background-color: #F8F8F8;
 }
 
-.recorder__footer {
+.recorder-footer {
 	display: none;
 }
 
