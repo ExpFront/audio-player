@@ -26,7 +26,7 @@ function saveAudio() {
 }
 
 function gotBuffers( buffers ) {
-		var canvas = document.getElementById( 'wavedisplay' );
+		var canvas = document.querySelector('.wavedisplay');
 
 		drawBuffer( canvas.width, canvas.height, canvas.getContext('2d'), buffers[0] );
 
