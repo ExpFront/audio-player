@@ -42,11 +42,6 @@ body {
 	cursor: pointer;
 }
 
-.button_type_play,
-.button_type_stop {
-	display: none;
-}
-
 .button_type_upload {
 	padding: 0;
 }

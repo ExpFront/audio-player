@@ -59,6 +59,11 @@ function stopRecording() {
 	audioRecorder.getBuffers(gotBuffers);
 }
 
+function repeatRecording() {
+	audioRecorder.clear();
+	audioRecorder.record();
+}
+
 function convertToMono( input ) {
 		var splitter = audioContext.createChannelSplitter(2);
 		var merger = audioContext.createChannelMerger(2);
