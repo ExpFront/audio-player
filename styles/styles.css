@@ -31,9 +31,7 @@ body {
 
 }
 
-.button_type_record,
-.button_type_upload,
-.button_type_repeat {
+.button_type_record {
 	padding: 15px 25px;
 	border: 0;
 	font-weight: bold;
