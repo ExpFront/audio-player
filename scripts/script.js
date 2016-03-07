@@ -14,6 +14,7 @@ var recIndex = 0;
 var recorder = document.getElementsByClassName('recorder')[0];
 var button_type_start = document.getElementsByClassName('button_type_start')[0];
 var button_type_stop = document.getElementsByClassName('button_type_stop')[0];
+var button_type_play = document.getElementsByClassName('button_type_play')[0];
 
 function saveAudio() {
 		audioRecorder.exportWAV( doneEncoding );
@@ -43,6 +44,7 @@ function startRecording() {
 
 	button_type_start.classList.add('recording');
 	button_type_start.style.display = 'none';
+	button_type_stop.style.display = 'block';
 	recorder.style.display = 'block';
 	audioRecorder.clear();
 	audioRecorder.record();
