@@ -66,7 +66,7 @@ function stopRecording() {
 function playSound() {
 	oscillator = context.createOscillator();
 
-	oscillator.connect(context.destination;
+	oscillator.connect(context.destination);
 	oscillator.noteOn(0);
 }
 
@@ -192,3 +192,4 @@ window.addEventListener('load', initAudio);
 btn_record.addEventListener('click', startRecording);
 btn_repeat.addEventListener('click', startRecording);
 button_type_stop.addEventListener('click', stopRecording);
+button_type_play.addEventListener('click', playSound)
