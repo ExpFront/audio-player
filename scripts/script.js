@@ -172,3 +172,6 @@ function initAudio() {
 }
 
 window.addEventListener('load', initAudio );
+
+var viz = document.getElementsByClassName('viz')[0];
+viz.addEventListener('click', toggleRecording);
