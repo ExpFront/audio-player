@@ -46,6 +46,7 @@ function startRecording() {
 	button_type_record.classList.add('recording');
 	button_type_record.style.display = 'none';
 	button_type_play.style.display = 'none';
+	button_type_stop.style.display = 'block';
 	recorder.style.display = 'block';
 	audioRecorder.clear();
 	audioRecorder.record();
@@ -57,11 +58,6 @@ function stopRecording() {
 	button_type_stop.style.display = 'none';
 	button_type_play.style.display = 'block';
 	audioRecorder.getBuffers(gotBuffers);
-}
-
-function repeatRecording() {
-	audioRecorder.clear();
-	audioRecorder.record();
 }
 
 function convertToMono( input ) {
