@@ -89,7 +89,7 @@ function updateAnalysers(time) {
 				analyserNode.getByteFrequencyData(freqByteData);
 
 				analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
-				analyserContext.fillStyle = '#F6D565';
+				analyserContext.fillStyle = 'red';
 				analyserContext.lineCap = 'round';
 				var multiplier = analyserNode.frequencyBinCount / numBars;
 
