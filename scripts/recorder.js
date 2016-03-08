@@ -102,12 +102,13 @@
 	};
 
 	Recorder.setupDownload = function(blob, filename){
-		var url = (window.URL || window.webkitURL).createObjectURL(blob);
-		var link = document.getElementsByClassName('link_type_upload')[0];
+		var file = (window.URL || window.webkitURL).createObjectURL(blob);
+		// var link = document.getElementsByClassName('link_type_upload')[0];
+
 		$.ajax({
 			type: 'POST',
 			url: 'server_path',
-			data: link,
+			data: file,
 			contentType: false,
 			cache: false,
 			processData: false
@@ -115,7 +116,7 @@
 		console.log(link);
 		console.log(filename);
 
-		link.download = filename || 'output.wav';
+		// link.download = filename || 'output.wav';
 	}
 
 	window.Recorder = Recorder;
