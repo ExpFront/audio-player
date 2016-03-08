@@ -104,9 +104,8 @@ function updateAnalysers(time) {
 	}
 	var recorder_duration = document.querySelector('.recorder-duration');
 	var date = new Date();
-	var newDate = date - timeStart;
-	var minutes = newDate.getMinutes();
-	var seconds = newDate.getSeconds();
+	var minutes = date.getMinutes() - timeStart.getMinutes();
+	var seconds = date.getSeconds() - timeStart.getMinutes();
 	var duration = minutes + '.' + (seconds < 10 ? '0' + seconds : seconds);
 
 	recorder_duration.innerHTML = duration;
