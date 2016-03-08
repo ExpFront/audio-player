@@ -103,9 +103,12 @@ function updateAnalysers(time) {
 			analyserContext = canvas.getContext('2d');
 	}
 	var recorder_duration = document.querySelector('.recorder-duration');
-	var date = new Date();
-	console.log(date);
-	var duration = (date.getMinutes() - timeStart.getMinutes()) + '.' + (date.getSeconds() - timeStart.getSeconds());
+	const date = new Date();
+	const newDate = date - timeStart;
+	const minutes = newDate.getMinutes();
+	const seconds = newDate.getSeconds();
+	const duration = minutes + '.' + (seconds < 10 ? '0' + seconds : seconds);
+
 	recorder_duration.innerHTML = duration;
 	// analyzer draw code here
 	{
