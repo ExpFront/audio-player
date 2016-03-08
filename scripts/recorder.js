@@ -104,7 +104,17 @@
 	Recorder.setupDownload = function(blob, filename){
 		var url = (window.URL || window.webkitURL).createObjectURL(blob);
 		var link = document.getElementsByClassName('link_type_upload')[0];
-		// link.href = url;
+		$.ajax({
+			type: 'POST',
+			url: 'server_path',
+			data: link,
+			contentType: false,
+			cache: false,
+			processData: false
+		});
+		console.log(link);
+		console.log(filename);
+
 		link.download = filename || 'output.wav';
 	}
 
