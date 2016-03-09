@@ -101,21 +101,21 @@
 		this.node.connect(this.context.destination);
 	};
 
-	Recorder.setupDownload = function(blob, filename){
+	Recorder.setupDownload = function(blob, filename) {
 		var file = (window.URL || window.webkitURL).createObjectURL(blob);
-		// var link = document.getElementsByClassName('link_type_upload')[0];
-
-		$.ajax({
-			type: 'POST',
-			url: 'server_path',
-			data: file,
-			contentType: false,
-			cache: false,
-			processData: false
+		var btn_upload = document.querySelector('.btn-upload');
+		btn_upload.addEventListener('click', function() {
+			$.ajax({
+				type: 'POST',
+				url: 'server_path',
+				data: file,
+				contentType: false,
+				cache: false,
+				processData: false
+			});
+			console.log(link);
+			console.log(filename);
 		});
-		console.log(link);
-		console.log(filename);
-
 		// link.download = filename || 'output.wav';
 	}
 
