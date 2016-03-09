@@ -105,7 +105,7 @@
 		var file = (window.URL || window.webkitURL).createObjectURL(blob);
 		var btn_upload = document.querySelector('.btn-upload');
 
-		btn_upload.addEventListener('click', function() {
+		btn_upload.onclick = function() {
 			$.ajax({
 				type: 'POST',
 				url: 'server_path',
