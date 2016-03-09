@@ -117,22 +117,24 @@ function updateAnalysers(time) {
 		analyserContext.fillStyle = 'rgb(200, 200, 200)';
 		analyserContext.lineCap = 'round';
 		var multiplier = analyserNode.frequencyBinCount / numBars;
-		analyserContext.lineTo(canvasWidth, canvasHeight / 2);
-		analyserContext.stroke();
-		// Draw rectangle for each frequency bin.
-		for (var i = 0; i < numBars; ++i) {
-			var magnitude = 0;
-			var offset = Math.floor(i * multiplier);
-			// gotta sum/average the block, or we miss narrow-bandwidth spikes
-			for (var j = 0; j < multiplier; j++) {
-				magnitude += freqByteData[offset + j];
-			}
 
-			magnitude = magnitude / multiplier;
-			var magnitude2 = freqByteData[i * multiplier];
-			analyserContext.fillStyle = 'rgb(200, 200, 200)';
-			analyserContext.fillRect(i * SPACING, canvasHeight, BAR_WIDTH, -magnitude);
-		}
+
+		var sliceWidth = canvasWidth * 1.0 / numBars;
+			var x = 0;
+
+			for(var i = 0; i < numBars; i++) {
+
+				var v = freqByteData[i] / 128.0;
+				var y = v * canvasHeight / 2;
+
+				if(i === 0) {
+					analyserContext.moveTo(x, y);
+				} else {
+					analyserContext.lineTo(x, y);
+				}
+
+				x += sliceWidth;
+			}
 	}
 
 	rafID = window.requestAnimationFrame(updateAnalysers);
