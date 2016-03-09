@@ -129,7 +129,7 @@ function updateAnalysers(time) {
 
 			magnitude = magnitude / multiplier;
 			var magnitude2 = freqByteData[i * multiplier];
-			analyserContext.fillStyle = 'red';
+			analyserContext.fillStyle = 'rgb(200, 200, 200)';
 			analyserContext.fillRect(i * SPACING, canvasHeight, BAR_WIDTH, -magnitude);
 		}
 	}
