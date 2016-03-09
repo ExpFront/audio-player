@@ -188,7 +188,7 @@ function initAudio() {
 	if (!navigator.requestAnimationFrame)
 			navigator.requestAnimationFrame = navigator.webkitRequestAnimationFrame || navigator.mozRequestAnimationFrame;
 
-	navigator.getUserMedia(
+	navigator.mediaDevices.getUserMedia(
 		{'audio': {
 			'mandatory': {
 				'googEchoCancellation': 'false',
