@@ -17,7 +17,7 @@ var btn_record = document.querySelector('.btn-record');
 var button_type_play = document.getElementsByClassName('button_type_play')[0];
 var button_type_stop = document.getElementsByClassName('button_type_stop')[0];
 var btn_repeat = document.querySelector('.btn-repeat');
-var initialDate = 0;
+var initialDate;
 
 function saveAudio() {
 		audioRecorder.exportWAV(doneEncoding);
@@ -139,10 +139,9 @@ function updateAnalysers(time) {
 
 function getDuration(initialDate) {
 	var date = new Date();
-	var seconds = date - initialDate;
-	var milliseconds = (seconds / 1000).toFixed(2);
-	console.log(milliseconds);
-	var duration = milliseconds;
+	var milliseconds = date - initialDate;
+	var duration = (seconds / 1000).toFixed(2);
+	console.log(duration);
 
 	return duration;
 }
