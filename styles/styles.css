@@ -32,6 +32,10 @@
 .button_type_stop {
 	background: none;
 	border: 0;
+}
+
+.button_type_play:focus,
+.button_type_stop:focus {
 	outline: none;
 }
 
