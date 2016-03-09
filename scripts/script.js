@@ -17,7 +17,7 @@ var btn_record = document.querySelector('.btn-record');
 var button_type_play = document.getElementsByClassName('button_type_play')[0];
 var button_type_stop = document.getElementsByClassName('button_type_stop')[0];
 var btn_repeat = document.querySelector('.btn-repeat');
-var startTime = new Date();
+var initialDate = 0;
 
 function saveAudio() {
 		audioRecorder.exportWAV(doneEncoding);
@@ -56,7 +56,7 @@ function startRecording() {
 		return;
 	}
 
-	startTime = new Date();
+	initialDate = new Date();
 	btn_record.classList.add('recording');
 	btn_record.style.display = 'none';
 	button_type_play.style.display = 'none';
@@ -67,7 +67,6 @@ function startRecording() {
 }
 
 function stopRecording() {
-	startTime = 0;
 	audioRecorder.stop();
 	btn_record.classList.remove('recording');
 	button_type_stop.style.display = 'none';
@@ -103,7 +102,7 @@ function updateAnalysers(time) {
 		analyserContext = canvas.getContext('2d');
 	}
 	var recorder_duration = document.querySelector('.recorder-duration');
-	recorder_duration.innerHTML = getDuration(startTime);
+	recorder_duration.innerHTML = getDuration(initialDate);
 	// analyzer draw code here
 	{
 		var SPACING = 3;
@@ -137,9 +136,9 @@ function updateAnalysers(time) {
 	rafID = window.requestAnimationFrame(updateAnalysers);
 }
 
-function getDuration(startTime) {
+function getDuration(initialDate) {
 	var date = new Date();
-	var seconds = date - startTime;
+	var seconds = date - initialDate;
 	var milliseconds = (seconds / 1000).toFixed(2);
 	console.log(milliseconds);
 	var duration = milliseconds;
