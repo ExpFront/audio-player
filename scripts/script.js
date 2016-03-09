@@ -1,4 +1,4 @@
-window.AudioContext = window.AudioContext || window.webkitAudioContext;
+window.AudioContext = window.AudioContext || window.webkitAudioContext  || window.mozAudioContext || window.msAudioContext;
 
 var audioContext = new AudioContext();
 var audioInput = null;
@@ -195,7 +195,7 @@ function initAudio() {
 	}
 
 	console.log(navigator.getUserMedia);
-	document.navigator.getUserMedia(
+	navigator.getUserMedia(
 		{'audio': {
 			'mandatory': {
 				'googEchoCancellation': 'false',
