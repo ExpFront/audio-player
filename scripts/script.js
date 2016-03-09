@@ -1,53 +1,52 @@
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
 
 var audioContext = new AudioContext();
-var audioInput = null,
-		realAudioInput = null,
-		inputPoint = null,
-		audioRecorder = null;
+var audioInput = null;
+var realAudioInput = null;
+var inputPoint = null;
+var audioRecorder = null;
 var rafID = null;
 var analyserContext = null;
 var canvasWidth, canvasHeight;
 var recIndex = 0;
 
-// Elements
+// HTML Elements
 var recorder_body = document.querySelector('.recorder-body');
 var recorder_footer = document.querySelector('.recorder-footer');
 var btn_record = document.querySelector('.btn-record');
 var button_type_play = document.getElementsByClassName('button_type_play')[0];
 var button_type_stop = document.getElementsByClassName('button_type_stop')[0];
 var btn_repeat = document.querySelector('.btn-repeat');
-var startTime = new Date();
 
 function saveAudio() {
-		audioRecorder.exportWAV( doneEncoding );
+		audioRecorder.exportWAV(doneEncoding);
 		// could get mono instead by saying
-		// audioRecorder.exportMonoWAV( doneEncoding );
+		// audioRecorder.exportMonoWAV(doneEncoding);
 }
 
-function gotBuffers( buffers ) {
+function gotBuffers(buffers) {
 		var canvas = document.querySelector('.wavedisplay');
 
-		drawBuffer( canvas.width, canvas.height, canvas.getContext('2d'), buffers[0] );
+		drawBuffer(canvas.width, canvas.height, canvas.getContext('2d'), buffers[0]);
 
 		// the ONLY time gotBuffers is called is right after a new recording is completed -
 		// so here's where we should set up the download.
-		audioRecorder.exportWAV( doneEncoding );
+		audioRecorder.exportWAV(doneEncoding);
 }
 
-function getBufferCallback( buffers ) {
+function getBufferCallback(buffers) {
 	var newSource = audioContext.createBufferSource();
-	var newBuffer = audioContext.createBuffer( 2, buffers[0].length, audioContext.sampleRate );
+	var newBuffer = audioContext.createBuffer(2, buffers[0].length, audioContext.sampleRate);
 	newBuffer.getChannelData(0).set(buffers[0]);
 	newBuffer.getChannelData(1).set(buffers[1]);
 	newSource.buffer = newBuffer;
 
-	newSource.connect( audioContext.destination );
+	newSource.connect(audioContext.destination);
 	newSource.start(0);
 }
 
-function doneEncoding( blob ) {
-	Recorder.setupDownload( blob, 'myRecording' + ((recIndex < 10) ? '0' : '') + recIndex + '.wav' );
+function doneEncoding(blob) {
+	Recorder.setupDownload(blob, 'myRecording' + ((recIndex < 10) ? '0' : '') + recIndex + '.wav');
 	recIndex++;
 }
 
@@ -56,7 +55,6 @@ function startRecording() {
 		return;
 	}
 
-	startTime = new Date();
 	btn_record.classList.add('recording');
 	btn_record.style.display = 'none';
 	button_type_play.style.display = 'none';
@@ -67,7 +65,6 @@ function startRecording() {
 }
 
 function stopRecording() {
-	startTime = 0;
 	audioRecorder.stop();
 	btn_record.classList.remove('recording');
 	button_type_stop.style.display = 'none';
@@ -80,13 +77,13 @@ function playSound() {
 	audioRecorder.getBuffers(getBufferCallback);
 }
 
-function convertToMono( input ) {
+function convertToMono(input) {
 	var splitter = audioContext.createChannelSplitter(2);
 	var merger = audioContext.createChannelMerger(2);
 
-	input.connect( splitter );
-	splitter.connect( merger, 0, 0);
-	splitter.connect( merger, 0, 1);
+	input.connect(splitter);
+	splitter.connect(merger, 0, 0);
+	splitter.connect(merger, 0, 1);
 	return merger;
 }
 
@@ -103,7 +100,8 @@ function updateAnalysers(time) {
 		analyserContext = canvas.getContext('2d');
 	}
 	var recorder_duration = document.querySelector('.recorder-duration');
-	recorder_duration.innerHTML = getDuration(startTime);
+	recorder_duration.innerHTML = getDuration();
+
 	// analyzer draw code here
 	{
 		var SPACING = 3;
@@ -121,7 +119,7 @@ function updateAnalysers(time) {
 		// Draw rectangle for each frequency bin.
 		for (var i = 0; i < numBars; ++i) {
 			var magnitude = 0;
-			var offset = Math.floor( i * multiplier );
+			var offset = Math.floor(i * multiplier);
 			// gotta sum/average the block, or we miss narrow-bandwidth spikes
 			for (var j = 0; j < multiplier; j++) {
 				magnitude += freqByteData[offset + j];
@@ -129,12 +127,12 @@ function updateAnalysers(time) {
 
 			magnitude = magnitude / multiplier;
 			var magnitude2 = freqByteData[i * multiplier];
-			analyserContext.fillStyle = 'hsl( ' + Math.round((i * 360) / numBars) + ', 100%, 50%)';
+			analyserContext.fillStyle = 'hsl(' + Math.round((i * 360) / numBars) + ', 100%, 50%)';
 			analyserContext.fillRect(i * SPACING, canvasHeight, BAR_WIDTH, -magnitude);
 		}
 	}
 
-	rafID = window.requestAnimationFrame( updateAnalysers );
+	rafID = window.requestAnimationFrame(updateAnalysers);
 }
 
 function getDuration(startTime) {
@@ -169,14 +167,14 @@ function gotStream(stream) {
 
 	analyserNode = audioContext.createAnalyser();
 	analyserNode.fftSize = 2048;
-	inputPoint.connect( analyserNode );
+	inputPoint.connect(analyserNode);
 
-	audioRecorder = new Recorder( inputPoint );
+	audioRecorder = new Recorder(inputPoint);
 
 	zeroGain = audioContext.createGain();
 	zeroGain.gain.value = 0.0;
-	inputPoint.connect( zeroGain );
-	zeroGain.connect( audioContext.destination );
+	inputPoint.connect(zeroGain);
+	zeroGain.connect(audioContext.destination);
 	updateAnalysers();
 }
 
