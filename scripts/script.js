@@ -139,11 +139,9 @@ function updateAnalysers(time) {
 
 function getDuration(startTime) {
 	var date = new Date();
-	var startSeconds = startTime.getSeconds();
-	var nowSeconds = date.getSeconds();
-	var seconds = nowSeconds - startSeconds;
-	console.log(seconds);
-	var duration = (seconds < 10 ? '0' + seconds : seconds);
+	var milliseconds = date - startTime;
+	console.log(milliseconds);
+	var duration = (milliseconds < 10 ? '0' + milliseconds : milliseconds);
 
 	return duration;
 }
