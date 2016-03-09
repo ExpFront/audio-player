@@ -85,27 +85,27 @@ function convertToMono( input ) {
 	var merger = audioContext.createChannelMerger(2);
 
 	input.connect( splitter );
-	splitter.connect( merger, 0, 0 );
-	splitter.connect( merger, 0, 1 );
+	splitter.connect( merger, 0, 0);
+	splitter.connect( merger, 0, 1);
 	return merger;
 }
 
 function cancelAnalyserUpdates() {
-	window.cancelAnimationFrame( rafID );
+	window.cancelAnimationFrame(rafID);
 	rafID = null;
 }
 
 function updateAnalysers(time) {
 	if (!analyserContext) {
-			var canvas = document.getElementById('analyser');
-			canvasWidth = canvas.width;
-			canvasHeight = canvas.height;
-			analyserContext = canvas.getContext('2d');
+		var canvas = document.getElementById('analyser');
+		canvasWidth = canvas.width;
+		canvasHeight = canvas.height;
+		analyserContext = canvas.getContext('2d');
 	}
 	var recorder_duration = document.querySelector('.recorder-duration');
 	var date = new Date();
 	var minutes = date.getMinutes() - timeStart.getMinutes();
-	var seconds = date.getSeconds() - timeStart.getMinutes();
+	var seconds = date.getSeconds() - timeStart.getSeconds();
 	var duration = minutes + '.' + (seconds < 10 ? '0' + seconds : seconds);
 
 	recorder_duration.innerHTML = duration;
@@ -144,12 +144,12 @@ function updateAnalysers(time) {
 
 function toggleMono() {
 	if (audioInput != realAudioInput) {
-			audioInput.disconnect();
-			realAudioInput.disconnect();
-			audioInput = realAudioInput;
+		audioInput.disconnect();
+		realAudioInput.disconnect();
+		audioInput = realAudioInput;
 	} else {
-			realAudioInput.disconnect();
-			audioInput = convertToMono( realAudioInput );
+		realAudioInput.disconnect();
+		audioInput = convertToMono(realAudioInput);
 	}
 
 	audioInput.connect(inputPoint);
@@ -162,8 +162,6 @@ function gotStream(stream) {
 	realAudioInput = audioContext.createMediaStreamSource(stream);
 	audioInput = realAudioInput;
 	audioInput.connect(inputPoint);
-
-//    audioInput = convertToMono( input );
 
 	analyserNode = audioContext.createAnalyser();
 	analyserNode.fftSize = 2048;
