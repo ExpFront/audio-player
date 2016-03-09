@@ -17,7 +17,7 @@ var btn_record = document.querySelector('.btn-record');
 var button_type_play = document.getElementsByClassName('button_type_play')[0];
 var button_type_stop = document.getElementsByClassName('button_type_stop')[0];
 var btn_repeat = document.querySelector('.btn-repeat');
-var timeStart = new Date();
+var startTime = new Date();
 
 function saveAudio() {
 		audioRecorder.exportWAV( doneEncoding );
@@ -56,7 +56,7 @@ function startRecording() {
 		return;
 	}
 
-	timeStart = new Date();
+	startTime = new Date();
 	btn_record.classList.add('recording');
 	btn_record.style.display = 'none';
 	button_type_play.style.display = 'none';
@@ -68,7 +68,7 @@ function startRecording() {
 }
 
 function stopRecording() {
-	timeStart = 0;
+	startTime = 0;
 	audioRecorder.stop();
 	btn_record.classList.remove('recording');
 	button_type_stop.style.display = 'none';
@@ -102,44 +102,53 @@ function updateAnalysers(time) {
 		canvasHeight = canvas.height;
 		analyserContext = canvas.getContext('2d');
 	}
-	var recorder_duration = document.querySelector('.recorder-duration');
-	var date = new Date();
-	var minutes = date.getMinutes() - timeStart.getMinutes();
-	var seconds = date.getSeconds() - timeStart.getSeconds();
-	var duration = minutes + '.' + (seconds < 10 ? '0' + seconds : seconds);
 
 	recorder_duration.innerHTML = duration;
 	// analyzer draw code here
 	{
 		var SPACING = 3;
 		var BAR_WIDTH = 1;
+		var step = Math.ceil( data.length / width );
+		var amp = canvasHeight / 2;
 		var numBars = Math.round(canvasWidth / SPACING);
 		var freqByteData = new Uint8Array(analyserNode.frequencyBinCount);
 
 		analyserNode.getByteFrequencyData(freqByteData);
 
 		analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
-		analyserContext.fillStyle = '#373A3C';
-		analyserContext.lineCap = 'round';
-		var multiplier = analyserNode.frequencyBinCount / numBars;
+		context.fillStyle = '#373A3C';
+		context.lineWidth = 20;
 
 		// Draw rectangle for each frequency bin.
-		for (var i = 0; i < numBars; ++i) {
-			var magnitude = 0;
-			var offset = Math.floor( i * multiplier );
-			// gotta sum/average the block, or we miss narrow-bandwidth spikes
-			for (var j = 0; j < multiplier; j++) {
-				magnitude += freqByteData[offset + j];
+		for (var i = 0; i < width; i++) {
+			var min = 1.0;
+			var max = -1.0;
+
+			for (j = 0; j < step; j++) {
+				var datum = data[(i * step) + j];
+
+				if (datum < min) {
+					min = datum;
+				}
+
+				if (datum > max) {
+					max = datum;
+				}
 			}
 
-			magnitude = magnitude / multiplier;
-			var magnitude2 = freqByteData[i * multiplier];
-			analyserContext.fillStyle = 'hsl( ' + Math.round((i * 360) / numBars) + ', 100%, 50%)';
-			analyserContext.fillRect(i * SPACING, canvasHeight, BAR_WIDTH, -magnitude);
+			analyserNode.fillRect(i, (1 + min) * amp, 1, Math.max(1, (max - min) * amp));
 		}
 	}
 
 	rafID = window.requestAnimationFrame( updateAnalysers );
+}
+
+function getDuration(startTime) {
+	var recorder_duration = document.querySelector('.recorder-duration');
+	var date = new Date();
+	var minutes = date.getMinutes() - startTime.getMinutes();
+	var seconds = date.getSeconds() - startTime.getSeconds();
+	var duration = minutes + '.' + (seconds < 10 ? '0' + seconds : seconds);
 }
 
 function toggleMono() {
