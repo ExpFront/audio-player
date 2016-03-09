@@ -195,7 +195,7 @@ function initAudio() {
 	}
 
 	console.log(navigator.getUserMedia);
-	navigator.mediaDevices.getUserMedia(
+	navigator.getUserMedia(
 		{'audio': {
 			'mandatory': {
 				'googEchoCancellation': 'false',
