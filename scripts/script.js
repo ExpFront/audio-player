@@ -108,42 +108,30 @@ function updateAnalysers(time) {
 	{
 		var SPACING = 3;
 		var BAR_WIDTH = 1;
-		// var numBars = Math.round(canvasWidth / SPACING);
+		var numBars = Math.round(canvasWidth / SPACING);
 		var freqByteData = new Uint8Array(analyserNode.frequencyBinCount);
 
 		analyserNode.getByteFrequencyData(freqByteData);
 
 		analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
-		analyserContext.fillStyle = 'rgb(200, 200, 200)';
+		analyserContext.fillStyle = '#373A3C';
 		analyserContext.lineCap = 'round';
 		var multiplier = analyserNode.frequencyBinCount / numBars;
 
-		analyser.fftSize = 2048;
-     var numBars = analyserContext.fftSize;
-     console.log(numBars);
-     var dataArray = new Uint8Array(numBars);
-
-		analyserContext.lineWidth = 2;
-		analyserContext.strokeStyle = 'rgb(0, 0, 0)';
-
-		analyserContext.beginPath();
-
-		var sliceWidth = canvasWidth * 1.0 / numBars;
-			var x = 0;
-
-			for(var i = 0; i < numBars; i++) {
-
-				var v = dataArray[i] / 128.0;
-				var y = v * canvasHeight / 2;
-
-				if(i === 0) {
-					analyserContext.moveTo(x, y);
-				} else {
-					analyserContext.lineTo(x, y);
-				}
-
-				x += sliceWidth;
+		// Draw rectangle for each frequency bin.
+		for (var i = 0; i < numBars; ++i) {
+			var magnitude = 0;
+			var offset = Math.floor(i * multiplier);
+			// gotta sum/average the block, or we miss narrow-bandwidth spikes
+			for (var j = 0; j < multiplier; j++) {
+				magnitude += freqByteData[offset + j];
 			}
+
+			magnitude = magnitude / multiplier;
+			var magnitude2 = freqByteData[i * multiplier];
+			analyserContext.fillStyle = 'hsl(' + Math.round((i * 360) / numBars) + ', 100%, 50%)';
+			analyserContext.fillRect(i * SPACING, canvasHeight, BAR_WIDTH, -magnitude);
+		}
 	}
 
 	rafID = window.requestAnimationFrame(updateAnalysers);
