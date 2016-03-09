@@ -108,7 +108,7 @@ function updateAnalysers(time) {
 	{
 		var SPACING = 3;
 		var BAR_WIDTH = 1;
-		var numBars = Math.round(canvasWidth / SPACING);
+		// var numBars = Math.round(canvasWidth / SPACING);
 		var freqByteData = new Uint8Array(analyserNode.frequencyBinCount);
 
 		analyserNode.getByteFrequencyData(freqByteData);
@@ -118,6 +118,10 @@ function updateAnalysers(time) {
 		analyserContext.lineCap = 'round';
 		var multiplier = analyserNode.frequencyBinCount / numBars;
 
+		analyser.fftSize = 2048;
+     var numBars = analyserContext.fftSize;
+     console.log(bufferLength);
+     var dataArray = new Uint8Array(numBars);
 
 		analyserContext.lineWidth = 2;
 		analyserContext.strokeStyle = 'rgb(0, 0, 0)';
@@ -129,7 +133,7 @@ function updateAnalysers(time) {
 
 			for(var i = 0; i < numBars; i++) {
 
-				var v = freqByteData[i] / 128.0;
+				var v = dataArray[i] / 128.0;
 				var y = v * canvasHeight / 2;
 
 				if(i === 0) {
