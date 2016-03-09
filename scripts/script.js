@@ -106,31 +106,30 @@ function updateAnalysers(time) {
 	recorder_duration.innerHTML = getDuration(startTime);
 	// analyzer draw code here
 	{
-		var SPACING = 3;
-		var BAR_WIDTH = 1;
-		var numBars = Math.round(canvasWidth / SPACING);
-		var freqByteData = new Uint8Array(analyserNode.frequencyBinCount);
+	var drawVisual = requestAnimationFrame(draw);
 
-		analyserNode.getByteFrequencyData(freqByteData);
+	analyser.getByteTimeDomainData(dataArray);
 
-		analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
-		analyserContext.fillStyle = '#373A3C';
-		analyserContext.lineCap = 'round';
-		var multiplier = analyserNode.frequencyBinCount / numBars;
+	canvasCtx.fillStyle = 'rgb(200, 200, 200)';
+	canvasCtx.fillRect(0, 0, WIDTH, HEIGHT);
 
-		// Draw rectangle for each frequency bin.
-		for (var i = 0; i < numBars; ++i) {
-			var magnitude = 0;
-			var offset = Math.floor(i * multiplier);
-			// gotta sum/average the block, or we miss narrow-bandwidth spikes
-			for (var j = 0; j < multiplier; j++) {
-				magnitude += freqByteData[offset + j];
-			}
+	canvasCtx.lineWidth = 2;
+	canvasCtx.strokeStyle = 'rgb(0, 0, 0)';
 
-			magnitude = magnitude / multiplier;
-			var magnitude2 = freqByteData[i * multiplier];
-			analyserContext.fillStyle = 'hsl(' + Math.round((i * 360) / numBars) + ', 100%, 50%)';
-			analyserContext.fillRect(i * SPACING, canvasHeight, BAR_WIDTH, -magnitude);
+	canvasCtx.beginPath();
+
+	var sliceWidth = WIDTH * 1.0 / bufferLength;
+	var x = 0;
+
+	for(var i = 0; i < bufferLength; i++) {
+
+		var v = dataArray[i] / 128.0;
+		var y = v * HEIGHT/2;
+
+		if(i === 0) {
+			canvasCtx.moveTo(x, y);
+		} else {
+			canvasCtx.lineTo(x, y);
 		}
 	}
 
