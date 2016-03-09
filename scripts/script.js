@@ -102,8 +102,8 @@ function updateAnalysers(time) {
 		canvasHeight = canvas.height;
 		analyserContext = canvas.getContext('2d');
 	}
-
-	recorder_duration.innerHTML = duration;
+	var recorder_duration = document.querySelector('.recorder-duration');
+	recorder_duration.innerHTML = getDuration(startTime);
 	// analyzer draw code here
 	{
 		var SPACING = 3;
@@ -138,11 +138,12 @@ function updateAnalysers(time) {
 }
 
 function getDuration(startTime) {
-	var recorder_duration = document.querySelector('.recorder-duration');
 	var date = new Date();
 	var minutes = date.getMinutes() - startTime.getMinutes();
 	var seconds = date.getSeconds() - startTime.getSeconds();
 	var duration = minutes + '.' + (seconds < 10 ? '0' + seconds : seconds);
+
+	return duration;
 }
 
 function toggleMono() {
