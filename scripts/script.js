@@ -67,6 +67,7 @@ function startRecording() {
 }
 
 function stopRecording() {
+	initialDate = 0;
 	audioRecorder.stop();
 	btn_record.classList.remove('recording');
 	button_type_stop.style.display = 'none';
