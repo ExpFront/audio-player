@@ -104,6 +104,7 @@
 	Recorder.setupDownload = function(blob, filename) {
 		var file = (window.URL || window.webkitURL).createObjectURL(blob);
 		var btn_upload = document.querySelector('.btn-upload');
+
 		btn_upload.addEventListener('click', function() {
 			$.ajax({
 				type: 'POST',
@@ -113,9 +114,8 @@
 				cache: false,
 				processData: false
 			});
-			console.log(link);
-			console.log(filename);
 		});
+
 		// link.download = filename || 'output.wav';
 	}
 
