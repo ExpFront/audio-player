@@ -55,7 +55,7 @@ function startRecording() {
 	if (!audioRecorder) {
 		return;
 	}
-	updateAnalysers();
+
 	initialDate = new Date
 	btn_record.classList.add('recording');
 	btn_record.style.display = 'none';
@@ -64,17 +64,17 @@ function startRecording() {
 	recorder_body.style.display = 'block';
 	audioRecorder.clear();
 	audioRecorder.record();
+	updateAnalysers();
 }
 
 function stopRecording() {
-	cancelAnalyserUpdates();
 	audioRecorder.stop();
 	btn_record.classList.remove('recording');
 	button_type_stop.style.display = 'none';
 	button_type_play.style.display = 'block';
 	recorder_footer.style.display = 'block';
-	initialDate = 0;
 	audioRecorder.getBuffers(gotBuffers);
+	cancelAnalyserUpdates();
 }
 
 function playSound() {
