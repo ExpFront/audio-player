@@ -57,6 +57,7 @@ function startRecording() {
 	}
 
 	initialDate = new Date();
+	getDuration();
 	btn_record.classList.add('recording');
 	btn_record.style.display = 'none';
 	button_type_play.style.display = 'none';
@@ -144,7 +145,6 @@ function getDuration() {
 	var duration = (milliseconds / 1000).toFixed(2);
 	console.log(duration);
 	recorder_duration.innerHTML = duration;
-
 }
 
 function toggleMono() {
