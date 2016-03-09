@@ -22,8 +22,10 @@
 	cursor: pointer;
 }
 
-button:hover {
-	background-color: #E3E3E4;
+.btn-record:hover,
+.btn-repeat:hover,
+.btn-upload:hover {
+	background-color: #1F1F21;
 }
 
 .button_type_play,
