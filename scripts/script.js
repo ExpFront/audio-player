@@ -62,7 +62,6 @@ function startRecording() {
 	button_type_play.style.display = 'none';
 	button_type_stop.style.display = 'block';
 	recorder_body.style.display = 'block';
-	recorder_footer.style.display = 'block';
 	audioRecorder.clear();
 	audioRecorder.record();
 }
