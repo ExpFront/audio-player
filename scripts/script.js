@@ -67,12 +67,13 @@ function startRecording() {
 }
 
 function stopRecording() {
-	initialDate = 0;
+
 	audioRecorder.stop();
 	btn_record.classList.remove('recording');
 	button_type_stop.style.display = 'none';
 	button_type_play.style.display = 'block';
 	recorder_footer.style.display = 'block';
+	initialDate = 0;
 	audioRecorder.getBuffers(gotBuffers);
 }
 
