@@ -67,7 +67,6 @@ function startRecording() {
 }
 
 function stopRecording() {
-
 	audioRecorder.stop();
 	btn_record.classList.remove('recording');
 	button_type_stop.style.display = 'none';
@@ -141,7 +140,7 @@ function updateAnalysers(time) {
 function getDuration(initialDate) {
 	var date = new Date();
 	var milliseconds = date - initialDate;
-	var duration = (seconds / 1000).toFixed(2);
+	var duration = (milliseconds / 1000).toFixed(2);
 	console.log(duration);
 
 	return duration;
