@@ -143,7 +143,7 @@ function getDuration(startTime) {
 	var nowSeconds = date.getSeconds();
 	var seconds = nowSeconds - startSeconds;
 	console.log(seconds);
-	var duration = minutes + '.' + (seconds < 10 ? '0' + seconds : seconds);
+	var duration = (seconds < 10 ? '0' + seconds : seconds);
 
 	return duration;
 }
