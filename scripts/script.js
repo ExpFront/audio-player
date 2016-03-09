@@ -68,8 +68,8 @@ function startRecording() {
 }
 
 function stopRecording() {
-	audioRecorder.stop();
 	cancelAnalyserUpdates();
+	audioRecorder.stop();
 	btn_record.classList.remove('recording');
 	button_type_stop.style.display = 'none';
 	button_type_play.style.display = 'block';
