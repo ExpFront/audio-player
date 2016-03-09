@@ -64,6 +64,7 @@ function startRecording() {
 	recorder_body.style.display = 'block';
 	audioRecorder.clear();
 	audioRecorder.record();
+	updateAnalysers();
 }
 
 function stopRecording() {
