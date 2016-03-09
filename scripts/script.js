@@ -1,4 +1,4 @@
-window.AudioContext = window.AudioContext || window.webkitAudioContext  || window.mozAudioContext || window.msAudioContext;
+window.AudioContext = window.AudioContext || window.webkitAudioContext;
 
 var audioContext = new AudioContext();
 var audioInput = null;
@@ -204,7 +204,7 @@ function initAudio() {
 				'googHighpassFilter': 'false'
 			},
 			'optional': []
-		}
+		},
 	}, gotStream, function(e) {
 		alert('Error getting audio');
 		console.log(e);
