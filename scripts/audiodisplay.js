@@ -1,7 +1,7 @@
 function drawBuffer( width, height, context, data ) {
 	var step = Math.ceil( data.length / width );
 	var amp = height / 2;
-	context.fillStyle = 'rgb(200, 200, 200)';;
+	context.fillStyle = '#373A3C';
 	context.lineWidth = 20;
 	context.clearRect(0, 0, width, height);
 
