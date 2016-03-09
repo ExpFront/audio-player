@@ -120,7 +120,7 @@ function updateAnalysers(time) {
 
 		analyser.fftSize = 2048;
      var numBars = analyserContext.fftSize;
-     console.log(bufferLength);
+     console.log(numBars);
      var dataArray = new Uint8Array(numBars);
 
 		analyserContext.lineWidth = 2;
