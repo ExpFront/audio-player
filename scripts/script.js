@@ -56,7 +56,7 @@ function startRecording() {
 		return;
 	}
 
-	initialDate = new Date();
+	initialDate = new Date
 	btn_record.classList.add('recording');
 	btn_record.style.display = 'none';
 	button_type_play.style.display = 'none';
@@ -64,11 +64,12 @@ function startRecording() {
 	recorder_body.style.display = 'block';
 	audioRecorder.clear();
 	audioRecorder.record();
+	updateAnalysers();
 }
 
 function stopRecording() {
-	cancelAnalyserUpdates();
 	audioRecorder.stop();
+	cancelAnalyserUpdates();
 	btn_record.classList.remove('recording');
 	button_type_stop.style.display = 'none';
 	button_type_play.style.display = 'block';
