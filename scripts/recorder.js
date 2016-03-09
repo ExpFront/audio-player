@@ -114,7 +114,7 @@
 				cache: false,
 				processData: false
 			});
-		});
+		};
 
 		// link.download = filename || 'output.wav';
 	}
