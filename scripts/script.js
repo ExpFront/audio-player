@@ -117,9 +117,8 @@ function updateAnalysers(time) {
 		analyserContext.fillStyle = 'rgb(200, 200, 200)';
 		analyserContext.lineCap = 'round';
 		var multiplier = analyserNode.frequencyBinCount / numBars;
-		analyserContext.lineTo(canvas.width, canvas.height/2);
-					canvasCtx.stroke();
-				};
+		analyserContext.lineTo(canvasWidth, canvasHeight / 2);
+		canvasCtx.stroke();
 		// Draw rectangle for each frequency bin.
 		for (var i = 0; i < numBars; ++i) {
 			var magnitude = 0;
