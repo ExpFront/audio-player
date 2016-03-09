@@ -119,6 +119,11 @@ function updateAnalysers(time) {
 		var multiplier = analyserNode.frequencyBinCount / numBars;
 
 
+		analyserContext.lineWidth = 2;
+		analyserContext.strokeStyle = 'rgb(0, 0, 0)';
+
+		analyserContext.beginPath();
+
 		var sliceWidth = canvasWidth * 1.0 / numBars;
 			var x = 0;
 
