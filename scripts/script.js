@@ -55,7 +55,7 @@ function startRecording() {
 	if (!audioRecorder) {
 		return;
 	}
-
+	updateAnalysers();
 	initialDate = new Date
 	btn_record.classList.add('recording');
 	btn_record.style.display = 'none';
@@ -64,7 +64,6 @@ function startRecording() {
 	recorder_body.style.display = 'block';
 	audioRecorder.clear();
 	audioRecorder.record();
-	updateAnalysers();
 }
 
 function stopRecording() {
@@ -179,7 +178,6 @@ function gotStream(stream) {
 	zeroGain.gain.value = 0.0;
 	inputPoint.connect(zeroGain);
 	zeroGain.connect(audioContext.destination);
-	updateAnalysers();
 }
 
 function initAudio() {
