@@ -13,6 +13,7 @@ var recIndex = 0;
 // HTML Elements
 var recorder_body = document.querySelector('.recorder-body');
 var recorder_footer = document.querySelector('.recorder-footer');
+var recorder_duration = document.querySelector('.recorder-duration');
 var btn_record = document.querySelector('.btn-record');
 var button_type_play = document.getElementsByClassName('button_type_play')[0];
 var button_type_stop = document.getElementsByClassName('button_type_stop')[0];
@@ -88,6 +89,7 @@ function convertToMono(input) {
 	input.connect(splitter);
 	splitter.connect(merger, 0, 0);
 	splitter.connect(merger, 0, 1);
+
 	return merger;
 }
 
@@ -103,8 +105,9 @@ function updateAnalysers(time) {
 		canvasHeight = canvas.height;
 		analyserContext = canvas.getContext('2d');
 	}
-	var recorder_duration = document.querySelector('.recorder-duration');
+
 	recorder_duration.innerHTML = getDuration(initialDate);
+
 	// analyzer draw code here
 	{
 		var SPACING = 3;
@@ -142,7 +145,6 @@ function getDuration(initialDate) {
 	var date = new Date();
 	var milliseconds = date - initialDate;
 	var duration = (milliseconds / 1000).toFixed(2);
-	console.log(duration);
 
 	return duration;
 }
@@ -163,7 +165,6 @@ function toggleMono() {
 function gotStream(stream) {
 	inputPoint = audioContext.createGain();
 
-	// Create an AudioNode from the stream.
 	realAudioInput = audioContext.createMediaStreamSource(stream);
 	audioInput = realAudioInput;
 	audioInput.connect(inputPoint);
@@ -193,7 +194,8 @@ function initAudio() {
 	}
 
 	navigator.getUserMedia(
-		{'audio': {
+		{
+			'audio': {
 			'mandatory': {
 				'googEchoCancellation': 'false',
 				'googAutoGainControl': 'false',
@@ -208,6 +210,7 @@ function initAudio() {
 	});
 }
 
+// Event Listeners
 window.addEventListener('load', initAudio);
 
 btn_record.addEventListener('click', startRecording);
