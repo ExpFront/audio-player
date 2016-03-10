@@ -119,11 +119,11 @@ function updateAnalysers(time) {
 		// analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
 		// analyserContext.fillStyle = '#373A3C';
 		// analyserContext.lineCap = 'round';
-		// var bufferLength = analyserNode.frequencyBinCount;
-		// var dataArray = new Uint8Array(bufferLength);
+		var bufferLength = analyserNode.frequencyBinCount;
+		var dataArray = new Uint8Array(bufferLength);
 		//
 		// analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
-		// analyserNode.getByteTimeDomainData(dataArray);
+		analyserNode.getByteTimeDomainData(dataArray);
 		//
 		// analyserContext.fillStyle = '#F8F8F8';
 		// analyserContext.fillRect(0, 0, canvasWidth, canvasHeight);
@@ -135,7 +135,8 @@ function updateAnalysers(time) {
 		//
 		// analyserContext.beginPath();
 		//
-		// var sliceWidth = canvasWidth / bufferLength;
+		var sliceWidth = canvasWidth / bufferLength;
+		console.log(sliceWidth);
 		// var x = 0;
 		//
 		// for(var i = 0; i < bufferLength; i++) {
@@ -164,7 +165,7 @@ function updateAnalysers(time) {
 			var max = -1.0;
 
 			for (j = 0; j < step; j++) {
-				var datum = Math.random() * (max - min) + min;
+				var datum = 0.00005;
 
 				if (datum < min) {
 					min = datum;
