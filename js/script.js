@@ -127,12 +127,12 @@ function updateAnalysers(time) {
 
 		analyserNode.getByteTimeDomainData(dataArray);
 
-		analyserContext.fillStyle = 'rgb(255, 255, 255)';
+		analyserContext.fillStyle = '#F8F8F8';
 		analyserContext.fillRect(0, 0, canvasWidth, canvasHeight);
 
 
 		analyserContext.lineWidth = 2;
-		analyserContext.strokeStyle = 'rgb(0, 0, 0)';
+		analyserContext.strokeStyle = '#373A3C';
 
 		analyserContext.beginPath();
 
