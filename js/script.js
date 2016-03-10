@@ -131,7 +131,7 @@ function updateAnalysers(time) {
 		analyserContext.fillRect(0, 0, canvasWidth, canvasHeight);
 
 
-		analyserContext.lineWidth = 20;
+		analyserContext.lineWidth = 2;
 		analyserContext.strokeStyle = '#373A3C';
 
 		analyserContext.beginPath();
