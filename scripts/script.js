@@ -139,10 +139,9 @@ function updateAnalysers(time) {
 		var sliceWidth = canvasWidth * 1.0 / bufferLength;
 		var x = 0;
 
-
 		for(var i = 0; i < bufferLength; i++) {
-			var v = dataArray[i];
-			var y = v * canvasHeight/2;
+			var v = dataArray[i] / 128.0;
+			var y = v * canvasHeight / 2;
 
 			if(i === 0) {
 				analyserContext.moveTo(x, y);
