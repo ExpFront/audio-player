@@ -133,6 +133,7 @@ function updateAnalysers(time) {
 
 		analyserContext.lineWidth = 2;
 		analyserContext.strokeStyle = '#373A3C';
+		analyserContext.lineCap = 'round';
 
 		analyserContext.beginPath();
 
