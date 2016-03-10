@@ -117,57 +117,44 @@ function updateAnalysers(time) {
 		//
 		// analyserNode.getByteFrequencyData(freqByteData);
 		//
-		analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
-		analyserContext.fillStyle = '#373A3C';
-		analyserContext.lineCap = 'round';
+		// analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
+		// analyserContext.fillStyle = '#373A3C';
+		// analyserContext.lineCap = 'round';
 		var bufferLength = analyserNode.frequencyBinCount;
 		var dataArray = new Uint8Array(bufferLength);
-		
+
 		analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
 
 		analyserNode.getByteTimeDomainData(dataArray);
 
-		// analyserContext.fillStyle = 'rgb(200, 200, 200)';
-		// analyserContext.fillRect(0, 0, canvasWidth, canvasHeight);
-		//
-		//
-		// analyserContext.lineWidth = 2;
-		// analyserContext.strokeStyle = 'rgb(0, 0, 0)';
-		//
-		// analyserContext.beginPath();
-		//
-		// var sliceWidth = canvasWidth * 1.0 / bufferLength;
-		// var x = 0;
-		//
-		//
-		// for(var i = 0; i < bufferLength; i++) {
-		// 	var v = dataArray[i] / 128.0;
-		// 	var y = v * canvasHeight / 2;
-		//
-		// 	if(i === 0) {
-		// 		analyserContext.moveTo(x, y);
-		// 	} else {
-		// 		analyserContext.lineTo(x, y);
-		// 	}
-		//
-		// 	x += sliceWidth;
-		// }
-		//
-		// analyserContext.lineTo(canvasWidth, canvasHeight / 2);
-		// analyserContext.stroke();
+		analyserContext.fillStyle = 'rgb(200, 200, 200)';
+		analyserContext.fillRect(0, 0, canvasWidth, canvasHeight);
 
-		////
-		analyserContext.fillStyle = '#373A3C';
+
 		analyserContext.lineWidth = 2;
-		analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);		analyserContext.fillStyle = '#373A3C';
+		analyserContext.strokeStyle = 'rgb(0, 0, 0)';
 
-		for (var i = 0; i < canvasWidth; i++) {
-			var min = 1.0;
-			var max = -1.0;
+		analyserContext.beginPath();
 
-			analyserContext.fillRect(i, (1 + min) * canvasHeight / 2, 1, Math.max(1, (max - min) * canvasHeight / 2));
+		var sliceWidth = canvasWidth * 1.0 / bufferLength;
+		var x = 0;
+
+
+		for(var i = 0; i < bufferLength; i++) {
+			var v = dataArray[i] / 128.0;
+			var y = v * canvasHeight/2;
+
+			if(i === 0) {
+				analyserContext.moveTo(x, y);
+			} else {
+				analyserContext.lineTo(x, y);
+			}
+
+			x += sliceWidth;
 		}
-		////
+
+		analyserContext.lineTo(canvasWidth, canvasHeight / 2);
+		analyserContext.stroke();
 	}
 
 	rafID = window.requestAnimationFrame(updateAnalysers);
