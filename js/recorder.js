@@ -116,6 +116,19 @@
 			});
 		};
 
+		var wavesurfer = WaveSurfer.create({
+			container: '#waveform',
+			waveColor: 'violet',
+			progressColor: 'purple'
+		});
+
+		var play = document.querySelector('.play');
+		wavesurfer.load(filename);
+
+		play.onclick = function() {
+			wavesurfer.playPause();
+		};
+
 		// link.download = filename || 'output.wav';
 	}
 
