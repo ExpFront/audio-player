@@ -141,7 +141,7 @@ function updateAnalysers(time) {
 
 
 		for(var i = 0; i < bufferLength; i++) {
-			var v = dataArray[i] / 128.0;
+			var v = dataArray[i];
 			var y = v * canvasHeight/2;
 
 			if(i === 0) {
