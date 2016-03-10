@@ -128,7 +128,7 @@ function updateAnalysers(time) {
 		var dataArray = new Uint8Array(bufferLength);
 	// 	// //
 	// 	// // analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
-	// 	// analyserNode.getByteTimeDomainData(dataArray);
+		analyserNode.getByteTimeDomainData(dataArray);
 	// 	// //
 	// 	// // analyserContext.fillStyle = '#F8F8F8';
 	// 	// // analyserContext.fillRect(0, 0, canvasWidth, canvasHeight);
@@ -220,8 +220,8 @@ function updateAnalysers(time) {
 		data: data
 	});
 
-	var bufferLength = analyserNode.frequencyBinCount;
-	var dataArray = new Uint8Array(bufferLength);
+	// var bufferLength = analyserNode.frequencyBinCount;
+	// var dataArray = new Uint8Array(bufferLength);
 	console.log(dataArray);
 
 	var ctx = waveform.context;
