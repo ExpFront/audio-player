@@ -112,30 +112,49 @@ function updateAnalysers(time) {
 	{
 		var SPACING = 3;
 		var BAR_WIDTH = 1;
-		var numBars = Math.round(canvasWidth / SPACING);
-		var freqByteData = new Uint8Array(analyserNode.frequencyBinCount);
-
-		analyserNode.getByteFrequencyData(freqByteData);
+		// var numBars = Math.round(canvasWidth / SPACING);
+		// var freqByteData = new Uint8Array(analyserNode.frequencyBinCount);
+		//
+		// analyserNode.getByteFrequencyData(freqByteData);
+		//
+		// analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
+		// analyserContext.fillStyle = '#373A3C';
+		// analyserContext.lineCap = 'round';
+		var bufferLength = analyserNode.frequencyBinCount;
+		var dataArray = new Unit8Array(bufferLength);
 
 		analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
-		analyserContext.fillStyle = '#373A3C';
-		analyserContext.lineCap = 'round';
-		var multiplier = analyserNode.frequencyBinCount / numBars;
 
-		// Draw rectangle for each frequency bin.
-		for (var i = 0; i < numBars; ++i) {
-			var magnitude = 0;
-			var offset = Math.floor(i * multiplier);
-			// gotta sum/average the block, or we miss narrow-bandwidth spikes
-			for (var j = 0; j < multiplier; j++) {
-				magnitude += freqByteData[offset + j];
+		analyserNode.getByteTimeDomainData(dataArray);
+
+		analyserContext.fillStyle = 'rgb(200, 200, 200)';
+		analyserContext.fillRect(0, 0, canvasWidth, canvasHeight);
+
+
+		analyserContext.lineWidth = 2;
+		analyserContext.strokeStyle = 'rgb(0, 0, 0)';
+
+		analyserContext.beginPath();
+
+		var sliceWidth = canvasWidth * 1.0 / bufferLength;
+		var x = 0;
+
+
+		for(var i = 0; i < bufferLength; i++) {
+			var v = dataArray[i] / 128.0;
+			var y = v * HEIGHT/2;
+
+			if(i === 0) {
+				canvasCtx.moveTo(x, y);
+			} else {
+				canvasCtx.lineTo(x, y);
 			}
 
-			magnitude = magnitude / multiplier;
-			var magnitude2 = freqByteData[i * multiplier];
-			analyserContext.fillStyle = 'hsl(' + Math.round((i * 360) / numBars) + ', 100%, 50%)';
-			analyserContext.fillRect(i * SPACING, canvasHeight, BAR_WIDTH, -magnitude);
+			x += sliceWidth;
 		}
+
+		analyserContext.lineTo(canvasWidth, canvasHeight / 2);
+			analyserContext.stroke();
 	}
 
 	rafID = window.requestAnimationFrame(updateAnalysers);
