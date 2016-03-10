@@ -121,7 +121,6 @@ function updateAnalysers(time) {
 		// 	// var freqByteData = new Uint8Array(analyserNode.frequencyBinCount);
 		// 	// console.log(freqByteData);
 		// 	// //
-		// 	// // analyserNode.getByteFrequencyData(freqByteData);
 		// 	// //
 		// 	// // analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
 		// 	// // analyserContext.fillStyle = '#373A3C';
@@ -131,6 +130,7 @@ function updateAnalysers(time) {
 		// 	// //
 		// 	// // analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
 			analyserNode.getByteTimeDomainData(dataArray);
+			analyserNode.getByteFrequencyData(freqByteData);
 		// 	// //
 		// 	// // analyserContext.fillStyle = '#F8F8F8';
 		// 	// // analyserContext.fillRect(0, 0, canvasWidth, canvasHeight);
