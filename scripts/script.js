@@ -160,18 +160,7 @@ function updateAnalysers(time) {
 		for (var i = 0; i < canvasWidth; i++) {
 			var min = 1.0;
 			var max = -1.0;
-
-			for (j = 0; j < 100; j++) {
-				var datum = data[i + j];
-
-				if (datum < min) {
-					min = datum;
-				}
-
-				if (datum > max) {
-					max = datum;
-				}
-			}
+			
 			analyserContext.fillRect(i, (1 + min) * canvasHeight / 2, 1, Math.max(1, (max - min) * canvasHeigth / 2));
 		}
 		////
