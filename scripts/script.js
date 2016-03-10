@@ -142,7 +142,7 @@ function updateAnalysers(time) {
 
 		for(var i = 0; i < bufferLength; i++) {
 			var v = dataArray[i] / 128.0;
-			var y = v * HEIGHT/2;
+			var y = v * canvasHeight/2;
 
 			if(i === 0) {
 				canvasCtx.moveTo(x, y);
