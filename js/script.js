@@ -164,7 +164,7 @@ function updateAnalysers(time) {
 			var max = -1.0;
 
 			for (j = 0; j < step; j++) {
-				var datum = 500;
+				var datum = 0.00005;
 
 				if (datum < min) {
 					min = datum;
