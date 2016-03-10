@@ -15,7 +15,6 @@ var recorder_body = document.querySelector('.recorder-body');
 var recorder_footer = document.querySelector('.recorder-footer');
 var recorder_duration = document.querySelector('.recorder-duration');
 var btn_record = document.querySelector('.btn-record');
-var button_type_play = document.getElementsByClassName('button_type_play')[0];
 var button_type_stop = document.getElementsByClassName('button_type_stop')[0];
 var btn_repeat = document.querySelector('.btn-repeat');
 var initialDate;
@@ -289,7 +288,6 @@ window.addEventListener('load', initAudio);
 btn_record.addEventListener('click', startRecording);
 btn_repeat.addEventListener('click', startRecording);
 button_type_stop.addEventListener('click', stopRecording);
-button_type_play.addEventListener('click', playSound);
 
 function recor() {
 	var wavesurfer = WaveSurfer.create({ container: '#waveform', waveColor: 'violet' });

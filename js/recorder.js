@@ -104,7 +104,7 @@
 	Recorder.setupDownload = function(blob, filename) {
 		var file = (window.URL || window.webkitURL).createObjectURL(blob);
 		var btn_upload = document.querySelector('.btn-upload');
-		var play = document.querySelector('.play');
+		var btn_play = document.querySelector('.btn-play');
 
 		btn_upload.onclick = function() {
 			$.ajax({
@@ -125,7 +125,7 @@
 
 		wavesurfer.load(file);
 
-		play.onclick = function() {
+		btn_play.onclick = function() {
 			console.log(file);
 			wavesurfer.playPause();
 		};
