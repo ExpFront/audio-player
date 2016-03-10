@@ -145,9 +145,9 @@ function updateAnalysers(time) {
 			var y = v * canvasHeight/2;
 
 			if(i === 0) {
-				canvasCtx.moveTo(x, y);
+				analyserContext.moveTo(x, y);
 			} else {
-				canvasCtx.lineTo(x, y);
+				analyserContext.lineTo(x, y);
 			}
 
 			x += sliceWidth;
