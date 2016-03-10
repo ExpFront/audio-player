@@ -129,15 +129,15 @@
 				wavesurfer: wavesurfer,
 				container: '#waveform-timeline'
 			});
-
-			var play = document.querySelector('.play');
-			wavesurfer.load(file);
-			play.onclick = function() {
-				console.log(file);
-				wavesurfer.playPause();
-			};
 		});
 
+		var play = document.querySelector('.play');
+		wavesurfer.load(file);
+		play.onclick = function() {
+			console.log(file);
+			wavesurfer.playPause();
+		};
+		
 		// link.download = filename || 'output.wav';
 	}
 
