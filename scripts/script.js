@@ -160,7 +160,7 @@ function updateAnalysers(time) {
 		analyserContext.fillStyle = '#373A3C';
 		analyserContext.lineWidth = 2;
 		analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
-		analyserContext.fillStyle = 'rgb(200, 200, 200)';
+		analyserContext.fillStyle = '#373A3C';
 
 		for (var i = 0; i < canvasWidth; i++) {
 			var min = 1.0;
