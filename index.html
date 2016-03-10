@@ -62,9 +62,14 @@
 	var data = [];
 
 var waveform = new Waveform({
-  container: document.getElementById("test"),
-  interpolate: false
+	container: document.getElementById("test"),
+	interpolate: false
 });
+
+waveform.update({
+  data: [0.5, 1.0, 0.5, 1.0]
+});
+
 var ctx = waveform.context;
 
 var gradient = ctx.createLinearGradient(0, 0, 0, waveform.height);
@@ -74,10 +79,10 @@ waveform.innerColor = gradient;
 
 var i=0;
 setInterval(function(){
-  data.push(Math.cos(i++/25) - 0.2 + Math.random()*0.3);
-  waveform.update({
-    data: data
-  });
+	data.push(Math.cos(i++/25) - 0.2 + Math.random()*0.3);
+	waveform.update({
+		data: data
+	});
 }, 50);
 
 </script>
