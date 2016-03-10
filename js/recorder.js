@@ -122,7 +122,7 @@
 
 		var wavesurfer = WaveSurfer.create({
 			container: '#waveform',
-			waveColor: 'violet',
+			waveColor: '#2d83d9 ',
 			progressColor: 'purple'
 		});
 
