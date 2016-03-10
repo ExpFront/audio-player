@@ -11,7 +11,8 @@ function drawBuffer( width, height, context, data ) {
 
 		for (j = 0; j < step; j++) {
 			var datum = data[(i * step) + j];
-
+			console.log(step);
+			console.log(datum);
 			if (datum < min) {
 				min = datum;
 			}
