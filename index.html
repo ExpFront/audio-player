@@ -1,87 +1,62 @@
 <!doctype html>
 <html>
-<head>
-	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>Audio Recorder</title>
-	<link rel="icon" href="static/favicon-192x192.png">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-4 col-xs-offset-4 text-xs-center">
-				<div class="recorder">
-					<div class="recorder-header">
-						<button type="button" class="btn btn-primary btn-record">START RECORDING</button>
-					</div>
-					<div class="row recorder-body">
-							<div class="col-xs-4 text-xs-center">
-								<div class="recorder-controls">
-									<button class="btn-play">
-										<i class="fa fa-play-circle fa-2x"></i>
-									</button>
-									<button class="btn-stop">
-										<i class="fa fa-stop-circle fa-2x"></i>
-									</button>
-								</div>
-							</div>
-							<div class="col-xs-8">
-								<div class="row recorder-diagram">
-									<canvas class="wavedisplay" width="1024" height="500"></canvas>
-									<div class="recorder-duration"></div>
-									<div id="waveform"></div>
-								</div>
-							</div>
-					</div>
-					<div class="row recorder-footer">
-						<div class="col-xs-6">
-							<button class="btn btn-primary btn-repeat">
-								START OVER
-							</button>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<title>Audio Recorder</title>
+		<link rel="icon" href="static/favicon-192x192.png">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/styles.css">
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-4 col-xs-offset-4 text-xs-center">
+					<div class="recorder">
+						<div class="recorder-header">
+							<button type="button" class="btn btn-primary btn-record">START RECORDING</button>
 						</div>
-						<div class="col-xs-6">
-							<button class="btn btn-primary btn-upload">
-								UPLOAD FILE
-							</button>
+						<div class="row recorder-body">
+								<div class="col-xs-4 text-xs-center">
+									<div class="recorder-controls">
+										<button class="btn-play">
+											<i class="fa fa-play-circle fa-2x"></i>
+										</button>
+										<button class="btn-stop">
+											<i class="fa fa-stop-circle fa-2x"></i>
+										</button>
+									</div>
+								</div>
+								<div class="col-xs-8">
+									<div class="row recorder-diagram">
+										<canvas class="wavedisplay" width="1024" height="500"></canvas>
+										<div class="recorder-duration"></div>
+										<div id="waveform"></div>
+									</div>
+								</div>
+						</div>
+						<div class="row recorder-footer">
+							<div class="col-xs-6">
+								<button class="btn btn-primary btn-repeat">
+									START OVER
+								</button>
+							</div>
+							<div class="col-xs-6">
+								<button class="btn btn-primary btn-upload">
+									UPLOAD FILE
+								</button>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<div id="test"></div>
-	<script src="js/waveform.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.0.52/wavesurfer.min.js"></script>
-	<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-	<script src="js/audiodisplay.js"></script>
-	<script src="js/recorder.js"></script>
-	<script src="js/script.js"></script>
-	<script class="example">
-	var data = [0.5, 1.0, 0.5, 1.0];
-
-	var waveform = new Waveform({
-		container: document.getElementById("waveform"),
-		interpolate: false,
-		data: data
-	});
-
-var ctx = waveform.context;
-console.log(ctx);
-var gradient = ctx.createLinearGradient(0, 0, 0, waveform.height);
-gradient.addColorStop(0.0, "#f60");
-gradient.addColorStop(1.0, "#ff1b00");
-waveform.innerColor = gradient;
-
-var i = 0;
-setInterval(function(){
-	data.push(Math.cos(i++ / 25) - 0.2 + Math.random()*0.3);
-	waveform.update({
-		data: data
-	});
-}, 50);
-
-</script>
-</body>
+		<div id="test"></div>
+		<script src="js/waveform.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.0.52/wavesurfer.min.js"></script>
+		<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+		<script src="js/audiodisplay.js"></script>
+		<script src="js/recorder.js"></script>
+		<script src="js/script.js"></script>
+	</body>
 </html>
