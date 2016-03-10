@@ -16,6 +16,7 @@ var recorder_footer = document.querySelector('.recorder-footer');
 var recorder_duration = document.querySelector('.recorder-duration');
 var btn_record = document.querySelector('.btn-record');
 var button_type_stop = document.getElementsByClassName('button_type_stop')[0];
+var btn_play = document.querySelector('.btn-play');
 var btn_repeat = document.querySelector('.btn-repeat');
 var initialDate;
 
@@ -63,7 +64,7 @@ function startRecording() {
 	initialDate = new Date
 	btn_record.classList.add('recording');
 	btn_record.style.display = 'none';
-	button_type_play.style.display = 'none';
+	btn_play.style.display = 'none';
 	button_type_stop.style.display = 'block';
 	recorder_body.style.display = 'block';
 	audioRecorder.clear();
@@ -75,7 +76,7 @@ function stopRecording() {
 	audioRecorder.stop();
 	btn_record.classList.remove('recording');
 	button_type_stop.style.display = 'none';
-	button_type_play.style.display = 'block';
+	btn_play.style.display = 'block';
 	recorder_footer.style.display = 'block';
 	audioRecorder.getBuffers(gotBuffers);
 	cancelAnalyserUpdates();
