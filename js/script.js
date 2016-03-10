@@ -153,7 +153,7 @@ function updateAnalysers(time) {
 		//
 		// analyserContext.lineTo(canvasWidth, canvasHeight / 2);
 		// analyserContext.stroke();
-		var step = 50;
+		var step = 100;
 		var amp = canvasHeight / 2;
 		analyserContext.fillStyle = '#373A3C';
 		analyserContext.lineWidth = 2;
