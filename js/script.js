@@ -236,8 +236,7 @@ function updateAnalysers(time) {
 		var v = dataArray[i] / 128.0;
 		console.log(v);
 		var pushed = Math.cos(i++ / 25) - 0.2 + Math.random()*0.3;
-		console.log(v);
-		data.push(pushed);
+		data.push(v);
 		waveform.update({
 			data: data
 		});
