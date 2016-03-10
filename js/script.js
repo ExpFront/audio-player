@@ -122,7 +122,7 @@ function updateAnalysers(time) {
 		// analyserContext.lineCap = 'round';
 		var bufferLength = analyserNode.frequencyBinCount;
 		var dataArray = new Uint8Array(bufferLength);
-
+		console.log(bufferLength);
 		analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
 
 		analyserNode.getByteTimeDomainData(dataArray);
