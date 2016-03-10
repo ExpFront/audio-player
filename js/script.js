@@ -166,6 +166,7 @@ function updateAnalysers(time) {
 
 			for (j = 0; j < step; j++) {
 				var datum = dataArray[(i * step) + j];
+				console.log(datum);
 
 				if (datum < min) {
 					min = datum;
