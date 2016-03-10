@@ -127,6 +127,7 @@ function updateAnalysers(time) {
 
 		analyserNode.getByteTimeDomainData(dataArray);
 
+		analyserContext.fillStyle = 'rgb(255, 255, 255)';
 		analyserContext.fillRect(0, 0, canvasWidth, canvasHeight);
 
 
