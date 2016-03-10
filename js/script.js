@@ -107,7 +107,6 @@ function updateAnalysers(time) {
 	}
 
 	recorder_duration.innerHTML = getDuration(initialDate);
-	console.log(audioRecorder.getBuffers(gotBuffers));
 	// analyzer draw code here
 	{
 		var SPACING = 3;
@@ -120,40 +119,62 @@ function updateAnalysers(time) {
 		// analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
 		// analyserContext.fillStyle = '#373A3C';
 		// analyserContext.lineCap = 'round';
-		var bufferLength = analyserNode.frequencyBinCount;
-		var dataArray = new Uint8Array(bufferLength);
+		// var bufferLength = analyserNode.frequencyBinCount;
+		// var dataArray = new Uint8Array(bufferLength);
+		//
+		// analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
+		// analyserNode.getByteTimeDomainData(dataArray);
+		//
+		// analyserContext.fillStyle = '#F8F8F8';
+		// analyserContext.fillRect(0, 0, canvasWidth, canvasHeight);
+		//
+		//
+		// analyserContext.lineWidth = 2;
+		// analyserContext.strokeStyle = '#373A3C';
+		// analyserContext.lineCap = 'round';
+		//
+		// analyserContext.beginPath();
+		//
+		// var sliceWidth = canvasWidth / bufferLength;
+		// var x = 0;
+		//
+		// for(var i = 0; i < bufferLength; i++) {
+		// 	var v = dataArray[i] / 128.0;
+		// 	var y = v * canvasHeight / 2;
+		//
+		// 	if(i === 0) {
+		// 		analyserContext.moveTo(x, y);
+		// 	} else {
+		// 		analyserContext.lineTo(x, y);
+		// 	}
+		//
+		// 	x += sliceWidth;
+		// }
+		//
+		// analyserContext.lineTo(canvasWidth, canvasHeight / 2);
+		// analyserContext.stroke();
+		var step = 50;
+		var amp = canvasHeight / 2;
+		context.fillStyle = '#373A3C';
+		context.lineWidth = 2;
+		context.clearRect(0, 0, canvasWidth, canvasHeight);
+		for (var i = 0; i < canvasWidth; i++) {
+			var min = 1.0;
+			var max = -1.0;
 
-		analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
-		analyserNode.getByteTimeDomainData(dataArray);
+			for (j = 0; j < step; j++) {
+				var datum = 500;
 
-		analyserContext.fillStyle = '#F8F8F8';
-		analyserContext.fillRect(0, 0, canvasWidth, canvasHeight);
+				if (datum < min) {
+					min = datum;
+				}
 
-
-		analyserContext.lineWidth = 2;
-		analyserContext.strokeStyle = '#373A3C';
-		analyserContext.lineCap = 'round';
-
-		analyserContext.beginPath();
-
-		var sliceWidth = canvasWidth / bufferLength;
-		var x = 0;
-
-		for(var i = 0; i < bufferLength; i++) {
-			var v = dataArray[i] / 128.0;
-			var y = v * canvasHeight / 2;
-
-			if(i === 0) {
-				analyserContext.moveTo(x, y);
-			} else {
-				analyserContext.lineTo(x, y);
+				if (datum > max) {
+					max = datum;
+				}
 			}
-
-			x += sliceWidth;
+			context.fillRect(i, (1 + min) * amp, 1, Math.max(1, (max - min) * amp));
 		}
-
-		analyserContext.lineTo(canvasWidth, canvasHeight / 2);
-		analyserContext.stroke();
 	}
 
 	rafID = window.requestAnimationFrame(updateAnalysers);
