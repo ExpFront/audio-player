@@ -48,3 +48,8 @@
 wave wave {
 	background-color: rgba(150, 193, 236, .5);
 }
+
+#test {
+	width: 500px;
+	height: 500px;
+}
