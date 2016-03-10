@@ -123,10 +123,10 @@
 		});
 
 		var play = document.querySelector('.play');
-		wavesurfer.load(filename);
+		wavesurfer.load(file);
 
 		play.onclick = function() {
-			console.log(filename);
+			console.log(file);
 			wavesurfer.playPause();
 		};
 
