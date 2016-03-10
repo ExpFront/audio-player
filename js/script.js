@@ -155,9 +155,10 @@ function updateAnalysers(time) {
 		// analyserContext.stroke();
 		var step = 50;
 		var amp = canvasHeight / 2;
-		context.fillStyle = '#373A3C';
-		context.lineWidth = 2;
-		context.clearRect(0, 0, canvasWidth, canvasHeight);
+		analyserContext.fillStyle = '#373A3C';
+		analyserContext.lineWidth = 2;
+		analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
+
 		for (var i = 0; i < canvasWidth; i++) {
 			var min = 1.0;
 			var max = -1.0;
@@ -173,7 +174,7 @@ function updateAnalysers(time) {
 					max = datum;
 				}
 			}
-			context.fillRect(i, (1 + min) * amp, 1, Math.max(1, (max - min) * amp));
+			analyserContext.fillRect(i, (1 + min) * amp, 1, Math.max(1, (max - min) * amp));
 		}
 	}
 
