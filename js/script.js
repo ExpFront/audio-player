@@ -100,7 +100,7 @@ function cancelAnalyserUpdates() {
 
 function updateAnalysers(time) {
 	if (!analyserContext) {
-		var canvas = document.getElementById('analyser');
+		var canvas = document.querySelector('.wavedisplay');
 		canvasWidth = canvas.width;
 		canvasHeight = canvas.height;
 		analyserContext = canvas.getContext('2d');
