@@ -112,7 +112,8 @@ function updateAnalysers(time) {
 		var SPACING = 3;
 		var BAR_WIDTH = 1;
 		// var numBars = Math.round(canvasWidth / SPACING);
-		// var freqByteData = new Uint8Array(analyserNode.frequencyBinCount);
+		var freqByteData = new Uint8Array(analyserNode.frequencyBinCount);
+		console.log(greqByteData);
 		//
 		// analyserNode.getByteFrequencyData(freqByteData);
 		//
