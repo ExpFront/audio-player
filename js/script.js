@@ -37,6 +37,11 @@ function gotBuffers(buffers) {
 			progressColor: 'purple'
 		});
 
+		var play = document.querySelector('.play');
+		play.onclick = function() {
+			wavesurfer.playPause();
+		};
+
 		// slider.oninput = function () {
 		// 	var zoomLevel = Number(slider.value);
 		// 	wavesurfer.zoom(zoomLevel);
