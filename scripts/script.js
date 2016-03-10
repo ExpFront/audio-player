@@ -117,16 +117,16 @@ function updateAnalysers(time) {
 		//
 		// analyserNode.getByteFrequencyData(freqByteData);
 		//
-		// analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
-		// analyserContext.fillStyle = '#373A3C';
-		// analyserContext.lineCap = 'round';
-		// var bufferLength = analyserNode.frequencyBinCount;
-		// var dataArray = new Uint8Array(bufferLength);
-		//
-		// analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
-		//
-		// analyserNode.getByteTimeDomainData(dataArray);
-		//
+		analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
+		analyserContext.fillStyle = '#373A3C';
+		analyserContext.lineCap = 'round';
+		var bufferLength = analyserNode.frequencyBinCount;
+		var dataArray = new Uint8Array(bufferLength);
+		
+		analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
+
+		analyserNode.getByteTimeDomainData(dataArray);
+
 		// analyserContext.fillStyle = 'rgb(200, 200, 200)';
 		// analyserContext.fillRect(0, 0, canvasWidth, canvasHeight);
 		//
@@ -159,8 +159,7 @@ function updateAnalysers(time) {
 		////
 		analyserContext.fillStyle = '#373A3C';
 		analyserContext.lineWidth = 2;
-		analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
-		analyserContext.fillStyle = '#373A3C';
+		analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);		analyserContext.fillStyle = '#373A3C';
 
 		for (var i = 0; i < canvasWidth; i++) {
 			var min = 1.0;
