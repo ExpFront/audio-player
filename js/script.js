@@ -37,7 +37,8 @@ function gotBuffers(buffers) {
 			progressColor: 'purple'
 		});
 
-		wavesurfer.load('myRecording01.wav');
+		wavesurfer.load('https://ia801404.us.archive.org/23/items/gd79-09-04.sbd.clugston.9452.sbeok.shnf/gd79-09-04Sbdd1t03.mp3');
+
 		// the ONLY time gotBuffers is called is right after a new recording is completed -
 		// so here's where we should set up the download.
 		audioRecorder.exportWAV(doneEncoding);
