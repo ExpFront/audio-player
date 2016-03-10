@@ -220,12 +220,7 @@ function updateAnalysers(time) {
 		data: data
 	});
 
-	// var bufferLength = analyserNode.frequencyBinCount;
-	// var dataArray = new Uint8Array(bufferLength);
-	console.log(dataArray);
-
 	var ctx = waveform.context;
-	console.log(ctx);
 	var gradient = ctx.createLinearGradient(0, 0, 0, waveform.height);
 	gradient.addColorStop(0.0, "#f60");
 	gradient.addColorStop(1.0, "#ff1b00");
@@ -236,7 +231,6 @@ function updateAnalysers(time) {
 		var v = dataArray[i] / 128.0;
 
 		var pushed = v / 50 - 0.2 + Math.random()*0.3;
-		console.log(pushed);
 		data.push(pushed);
 		waveform.update({
 			data: data
