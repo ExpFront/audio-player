@@ -109,76 +109,101 @@ function updateAnalysers(time) {
 	recorder_duration.innerHTML = getDuration(initialDate);
 	// analyzer draw code here
 	{
-		var SPACING = 3;
-		var BAR_WIDTH = 1;
-		// var numBars = Math.round(canvasWidth / SPACING);
-		var freqByteData = new Uint8Array(analyserNode.frequencyBinCount);
-		console.log(freqByteData);
-		//
-		// analyserNode.getByteFrequencyData(freqByteData);
-		//
-		// analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
+		// var SPACING = 3;
+		// var BAR_WIDTH = 1;
+		// // var numBars = Math.round(canvasWidth / SPACING);
+		// var freqByteData = new Uint8Array(analyserNode.frequencyBinCount);
+		// console.log(freqByteData);
+		// //
+		// // analyserNode.getByteFrequencyData(freqByteData);
+		// //
+		// // analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
+		// // analyserContext.fillStyle = '#373A3C';
+		// // analyserContext.lineCap = 'round';
+		// var bufferLength = analyserNode.frequencyBinCount;
+		// var dataArray = new Uint8Array(bufferLength);
+		// //
+		// // analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
+		// analyserNode.getByteTimeDomainData(dataArray);
+		// //
+		// // analyserContext.fillStyle = '#F8F8F8';
+		// // analyserContext.fillRect(0, 0, canvasWidth, canvasHeight);
+		// //
+		// //
+		// // analyserContext.lineWidth = 2;
+		// // analyserContext.strokeStyle = '#373A3C';
+		// // analyserContext.lineCap = 'round';
+		// //
+		// // analyserContext.beginPath();
+		// //
+		// var sliceWidth = canvasWidth / bufferLength;
+		// // var x = 0;
+		// //
+		// // for(var i = 0; i < bufferLength; i++) {
+		// 	// var v = dataArray[i] / 128.0;
+		// // 	var y = v * canvasHeight / 2;
+		// //
+		// // 	if(i === 0) {
+		// // 		analyserContext.moveTo(x, y);
+		// // 	} else {
+		// // 		analyserContext.lineTo(x, y);
+		// // 	}
+		// //
+		// // 	x += sliceWidth;
+		// // }
+		// //
+		// // analyserContext.lineTo(canvasWidth, canvasHeight / 2);
+		// // analyserContext.stroke();
+		// var step = Math.ceil( dataArray.length / canvasWidth );
+		// var amp = canvasHeight / 2;
 		// analyserContext.fillStyle = '#373A3C';
-		// analyserContext.lineCap = 'round';
-		var bufferLength = analyserNode.frequencyBinCount;
-		var dataArray = new Uint8Array(bufferLength);
-		//
-		// analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
-		analyserNode.getByteTimeDomainData(dataArray);
-		//
-		// analyserContext.fillStyle = '#F8F8F8';
-		// analyserContext.fillRect(0, 0, canvasWidth, canvasHeight);
-		//
-		//
 		// analyserContext.lineWidth = 2;
-		// analyserContext.strokeStyle = '#373A3C';
-		// analyserContext.lineCap = 'round';
+		// analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
 		//
-		// analyserContext.beginPath();
+		// var v = dataArray[i] / 128.0;
+		// console.log(v);
+		// for (var i = 0; i < canvasWidth; i++) {
+		// 	var min = 1.0;
+		// 	var max = -1.0;
 		//
-		var sliceWidth = canvasWidth / bufferLength;
-		// var x = 0;
+		// 	for (j = 0; j < step; j++) {
+		// 		var datum = dataArray[(i * step) + j];
 		//
-		// for(var i = 0; i < bufferLength; i++) {
-			// var v = dataArray[i] / 128.0;
-		// 	var y = v * canvasHeight / 2;
+		// 		if (datum < min) {
+		// 			min = datum;
+		// 		}
 		//
-		// 	if(i === 0) {
-		// 		analyserContext.moveTo(x, y);
-		// 	} else {
-		// 		analyserContext.lineTo(x, y);
+		// 		if (datum > max) {
+		// 			max = datum;
+		// 		}
 		// 	}
-		//
-		// 	x += sliceWidth;
+		// 	analyserContext.fillRect(i, (1 + min) * amp, 1, Math.max(1, (max - min) * amp));
 		// }
-		//
-		// analyserContext.lineTo(canvasWidth, canvasHeight / 2);
-		// analyserContext.stroke();
-		var step = Math.ceil( dataArray.length / canvasWidth );
-		var amp = canvasHeight / 2;
-		analyserContext.fillStyle = '#373A3C';
-		analyserContext.lineWidth = 2;
-		analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
 
-		var v = dataArray[i] / 128.0;
-		console.log(v);
-		for (var i = 0; i < canvasWidth; i++) {
-			var min = 1.0;
-			var max = -1.0;
+		var SPACING = 3;
+				var BAR_WIDTH = 1;
+				var numBars = Math.round(canvasWidth / SPACING);
+				var freqByteData = new Uint8Array(analyserNode.frequencyBinCount);
 
-			for (j = 0; j < step; j++) {
-				var datum = dataArray[(i * step) + j];
+				analyserNode.getByteFrequencyData(freqByteData);
 
-				if (datum < min) {
-					min = datum;
+				analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
+				analyserContext.fillStyle = '#F6D565';
+				analyserContext.lineCap = 'round';
+				var multiplier = analyserNode.frequencyBinCount / numBars;
+
+				// Draw rectangle for each frequency bin.
+				for (var i = 0; i < numBars; ++i) {
+						var magnitude = 0;
+						var offset = Math.floor( i * multiplier );
+						// gotta sum/average the block, or we miss narrow-bandwidth spikes
+						for (var j = 0; j< multiplier; j++)
+								magnitude += freqByteData[offset + j];
+						magnitude = magnitude / multiplier;
+						var magnitude2 = freqByteData[i * multiplier];
+						analyserContext.fillStyle = "hsl( " + Math.round((i*360)/numBars) + ", 100%, 50%)";
+						analyserContext.fillRect(i * SPACING, canvasHeight, BAR_WIDTH, -magnitude);
 				}
-
-				if (datum > max) {
-					max = datum;
-				}
-			}
-			analyserContext.fillRect(i, (1 + min) * amp, 1, Math.max(1, (max - min) * amp));
-		}
 	}
 
 	rafID = window.requestAnimationFrame(updateAnalysers);
