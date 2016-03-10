@@ -136,7 +136,7 @@ function updateAnalysers(time) {
 
 		analyserContext.beginPath();
 
-		var sliceWidth = canvasWidth * 1.0 / bufferLength;
+		var sliceWidth = canvasWidth * 5.0 / bufferLength;
 		var x = 0;
 
 		for(var i = 0; i < bufferLength; i++) {
