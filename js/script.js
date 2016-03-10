@@ -222,6 +222,7 @@ function updateAnalysers(time) {
 
 	var bufferLength = analyserNode.frequencyBinCount;
 	var dataArray = new Uint8Array(bufferLength);
+	console.log(dataArray);
 
 	var ctx = waveform.context;
 	console.log(ctx);
@@ -233,7 +234,6 @@ function updateAnalysers(time) {
 	var i = 0;
 	setInterval(function() {
 		var v = dataArray[i] / 128.0;
-		console.log(v);
 		data.push(Math.cos(i++ / 25) - 0.2 + Math.random()*0.3);
 		waveform.update({
 			data: data
