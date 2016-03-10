@@ -160,8 +160,8 @@ function updateAnalysers(time) {
 		for (var i = 0; i < canvasWidth; i++) {
 			var min = 1.0;
 			var max = -1.0;
-			
-			analyserContext.fillRect(i, (1 + min) * canvasHeight / 2, 1, Math.max(1, (max - min) * canvasHeigth / 2));
+
+			analyserContext.fillRect(i, (1 + min) * canvasHeight / 2, 1, Math.max(1, (max - min) * canvasHeight / 2));
 		}
 		////
 	}
