@@ -28,7 +28,7 @@ function saveAudio() {
 
 function gotBuffers(buffers) {
 		var canvas = document.querySelector('.wavedisplay');
-
+		console.log(buffers);
 		drawBuffer(canvas.width, canvas.height, canvas.getContext('2d'), buffers[0]);
 
 		// the ONLY time gotBuffers is called is right after a new recording is completed -
@@ -125,7 +125,6 @@ function updateAnalysers(time) {
 
 		analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
 		analyserNode.getByteTimeDomainData(dataArray);
-		console.log(analyserNode.getByteTimeDomainData(dataArray));
 
 		analyserContext.fillStyle = '#F8F8F8';
 		analyserContext.fillRect(0, 0, canvasWidth, canvasHeight);
