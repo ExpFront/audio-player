@@ -120,41 +120,61 @@ function updateAnalysers(time) {
 		// analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
 		// analyserContext.fillStyle = '#373A3C';
 		// analyserContext.lineCap = 'round';
-		var bufferLength = analyserNode.frequencyBinCount;
-		var dataArray = new Uint8Array(bufferLength);
+		// var bufferLength = analyserNode.frequencyBinCount;
+		// var dataArray = new Uint8Array(bufferLength);
+		//
+		// analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
+		//
+		// analyserNode.getByteTimeDomainData(dataArray);
+		//
+		// analyserContext.fillStyle = 'rgb(200, 200, 200)';
+		// analyserContext.fillRect(0, 0, canvasWidth, canvasHeight);
+		//
+		//
+		// analyserContext.lineWidth = 2;
+		// analyserContext.strokeStyle = 'rgb(0, 0, 0)';
+		//
+		// analyserContext.beginPath();
+		//
+		// var sliceWidth = canvasWidth * 1.0 / bufferLength;
+		// var x = 0;
+		//
+		//
+		// for(var i = 0; i < bufferLength; i++) {
+		// 	var v = dataArray[i] / 128.0;
+		// 	var y = v * canvasHeight / 2;
+		//
+		// 	if(i === 0) {
+		// 		analyserContext.moveTo(x, y);
+		// 	} else {
+		// 		analyserContext.lineTo(x, y);
+		// 	}
+		//
+		// 	x += sliceWidth;
+		// }
+		//
+		// analyserContext.lineTo(canvasWidth, canvasHeight / 2);
+		// analyserContext.stroke();
 
-		analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
+		////
+		for (var i = 0; i < canvasWidth; i++) {
+			var min = 1.0;
+			var max = -1.0;
 
-		analyserNode.getByteTimeDomainData(dataArray);
+			for (j = 0; j < 100; j++) {
+				var datum = data[i + j];
 
-		analyserContext.fillStyle = 'rgb(200, 200, 200)';
-		analyserContext.fillRect(0, 0, canvasWidth, canvasHeight);
+				if (datum < min) {
+					min = datum;
+				}
 
-
-		analyserContext.lineWidth = 2;
-		analyserContext.strokeStyle = 'rgb(0, 0, 0)';
-
-		analyserContext.beginPath();
-
-		var sliceWidth = canvasWidth * 1.0 / bufferLength;
-		var x = 0;
-
-
-		for(var i = 0; i < bufferLength; i++) {
-			var v = dataArray[i] / 128.0;
-			var y = v * canvasHeight/2;
-
-			if(i === 0) {
-				analyserContext.moveTo(x, y);
-			} else {
-				analyserContext.lineTo(x, y);
+				if (datum > max) {
+					max = datum;
+				}
 			}
-
-			x += sliceWidth;
+			analyserContext.fillRect(i, (1 + min) * canvasHeight / 2, 1, Math.max(1, (max - min) * canvasHeigth / 2));
 		}
-
-		analyserContext.lineTo(canvasWidth, canvasHeight / 2);
-		analyserContext.stroke();
+		////
 	}
 
 	rafID = window.requestAnimationFrame(updateAnalysers);
