@@ -124,7 +124,7 @@
 			container: '#waveform',
 			waveColor: '#2d83d9 ',
 			progressColor: '#eff6fc',
-			cursorWidth: 50
+			minPxPerSec: 200
 		});
 
 		wavesurfer.load(file);
