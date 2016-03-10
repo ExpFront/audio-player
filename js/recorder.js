@@ -122,13 +122,21 @@
 			progressColor: 'purple'
 		});
 
-		var play = document.querySelector('.play');
-		wavesurfer.load(file);
+		wavesurfer.on('ready', function () {
+			var timeline = Object.create(WaveSurfer.Timeline);
 
-		play.onclick = function() {
-			console.log(file);
-			wavesurfer.playPause();
-		};
+			timeline.init({
+				wavesurfer: wavesurfer,
+				container: '#waveform-timeline'
+			});
+
+			var play = document.querySelector('.play');
+			wavesurfer.load(file);
+			play.onclick = function() {
+				console.log(file);
+				wavesurfer.playPause();
+			};
+		});
 
 		// link.download = filename || 'output.wav';
 	}
