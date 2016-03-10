@@ -123,12 +123,9 @@ function updateAnalysers(time) {
 		var bufferLength = analyserNode.frequencyBinCount;
 		var dataArray = new Uint8Array(bufferLength);
 
-		console.log(audioRecorder.buffers);
-		console.log(dataArray);
-
 		analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
-
 		analyserNode.getByteTimeDomainData(dataArray);
+		console.log(analyserNode.getByteTimeDomainData(dataArray));
 
 		analyserContext.fillStyle = '#F8F8F8';
 		analyserContext.fillRect(0, 0, canvasWidth, canvasHeight);
