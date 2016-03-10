@@ -292,8 +292,6 @@ button_type_stop.addEventListener('click', stopRecording);
 button_type_play.addEventListener('click', playSound);
 
 function rec() {
-	var rec = document.querySelector('.record');
-
 	var wavesurfer = WaveSurfer.create({ container: '#waveform', waveColor: 'violet' });
 
 	var microphone = Object.create(WaveSurfer.Microphone);
@@ -302,7 +300,10 @@ function rec() {
 		wavesurfer: wavesurfer
 	});
 
-	rec.onclick = function() {
-		microphone.start();
-	}
+	microphone.start();
 }
+
+var rec = document.querySelector('.record');
+rec.onclick = function() {
+	rec()
+};
