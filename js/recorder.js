@@ -126,6 +126,7 @@
 		wavesurfer.load(filename);
 
 		play.onclick = function() {
+			console.log(filename);
 			wavesurfer.playPause();
 		};
 
