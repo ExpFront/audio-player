@@ -121,7 +121,7 @@ function updateAnalysers(time) {
 		// analyserContext.fillStyle = '#373A3C';
 		// analyserContext.lineCap = 'round';
 		var bufferLength = analyserNode.frequencyBinCount;
-		var dataArray = new Unit8Array(bufferLength);
+		var dataArray = new Uint8Array(bufferLength);
 
 		analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
 
@@ -154,7 +154,7 @@ function updateAnalysers(time) {
 		}
 
 		analyserContext.lineTo(canvasWidth, canvasHeight / 2);
-			analyserContext.stroke();
+		analyserContext.stroke();
 	}
 
 	rafID = window.requestAnimationFrame(updateAnalysers);
