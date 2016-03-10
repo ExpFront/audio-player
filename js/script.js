@@ -304,6 +304,4 @@ function rec() {
 }
 
 var rec = document.querySelector('.record');
-rec.onclick = function() {
-	rec()
-};
+rec.onclick = rec;
