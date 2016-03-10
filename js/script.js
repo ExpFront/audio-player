@@ -74,6 +74,7 @@ function stopRecording() {
 	button_type_stop.style.display = 'none';
 	button_type_play.style.display = 'block';
 	recorder_footer.style.display = 'block';
+	console.log(audioRecorder);
 	audioRecorder.getBuffers(gotBuffers);
 	cancelAnalyserUpdates();
 }
