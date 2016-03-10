@@ -28,7 +28,7 @@ function saveAudio() {
 
 function gotBuffers(buffers) {
 		var canvas = document.querySelector('.wavedisplay');
-		console.log(buffers);
+
 		drawBuffer(canvas.width, canvas.height, canvas.getContext('2d'), buffers[0]);
 
 		// the ONLY time gotBuffers is called is right after a new recording is completed -
@@ -74,7 +74,6 @@ function stopRecording() {
 	button_type_stop.style.display = 'none';
 	button_type_play.style.display = 'block';
 	recorder_footer.style.display = 'block';
-	console.log(audioRecorder);
 	audioRecorder.getBuffers(gotBuffers);
 	cancelAnalyserUpdates();
 }
