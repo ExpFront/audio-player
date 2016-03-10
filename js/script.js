@@ -129,8 +129,7 @@ function updateAnalysers(time) {
 			var dataArray = new Uint8Array(bufferLength);
 		// 	// //
 		// 	// // analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
-			analyserNode.getByteTimeDomainData(dataArray);
-			analyserNode.getByteFrequencyData(freqByteData);
+			analyserNode.getByteFrequencyData(dataArray);
 		// 	// //
 		// 	// // analyserContext.fillStyle = '#F8F8F8';
 		// 	// // analyserContext.fillRect(0, 0, canvasWidth, canvasHeight);
