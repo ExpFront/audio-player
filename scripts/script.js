@@ -157,6 +157,10 @@ function updateAnalysers(time) {
 		// analyserContext.stroke();
 
 		////
+		analyserContext.fillStyle = '#373A3C';
+		analyserContext.lineWidth = 2;
+		analyserContext.clearRect(0, 0, width, height);
+
 		for (var i = 0; i < canvasWidth; i++) {
 			var min = 1.0;
 			var max = -1.0;
