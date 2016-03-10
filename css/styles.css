@@ -28,13 +28,13 @@
 	background-color: #1F1F21;
 }
 
-.button_type_play,
+.btn_play,
 .button_type_stop {
 	background: none;
 	border: 0;
 }
 
-.button_type_play:focus,
+.btn_play:focus,
 .button_type_stop:focus {
 	outline: none;
 }

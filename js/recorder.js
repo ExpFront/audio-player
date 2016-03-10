@@ -116,8 +116,10 @@
 				processData: false
 			});
 		};
-		var wave = document.querySelector('#waveform');
+
+		var wave = document.querySelector('#waveform'); // To clear after repeat
 		wave.innerHTML = '';
+
 		var wavesurfer = WaveSurfer.create({
 			container: '#waveform',
 			waveColor: 'violet',
