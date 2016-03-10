@@ -15,7 +15,7 @@ var recorder_body = document.querySelector('.recorder-body');
 var recorder_footer = document.querySelector('.recorder-footer');
 var recorder_duration = document.querySelector('.recorder-duration');
 var btn_record = document.querySelector('.btn-record');
-var button_type_stop = document.getElementsByClassName('button_type_stop')[0];
+var btn_stop = document.querySelector('.btn-stop');
 var btn_play = document.querySelector('.btn-play');
 var btn_repeat = document.querySelector('.btn-repeat');
 var initialDate;
@@ -65,7 +65,7 @@ function startRecording() {
 	btn_record.classList.add('recording');
 	btn_record.style.display = 'none';
 	btn_play.style.display = 'none';
-	button_type_stop.style.display = 'block';
+	btn_stop.style.display = 'block';
 	recorder_body.style.display = 'block';
 	audioRecorder.clear();
 	audioRecorder.record();
@@ -75,7 +75,7 @@ function startRecording() {
 function stopRecording() {
 	audioRecorder.stop();
 	btn_record.classList.remove('recording');
-	button_type_stop.style.display = 'none';
+	btn_stop.style.display = 'none';
 	btn_play.style.display = 'block';
 	recorder_footer.style.display = 'block';
 	audioRecorder.getBuffers(gotBuffers);
@@ -288,4 +288,4 @@ window.addEventListener('load', initAudio);
 
 btn_record.addEventListener('click', startRecording);
 btn_repeat.addEventListener('click', startRecording);
-button_type_stop.addEventListener('click', stopRecording);
+btn_stop.addEventListener('click', stopRecording);

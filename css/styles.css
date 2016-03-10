@@ -29,13 +29,13 @@
 }
 
 .btn-play,
-.button_type_stop {
+.btn-stop {
 	background: none;
 	border: 0;
 }
 
 .btn-play:focus,
-.button_type_stop:focus {
+.btn-stop:focus {
 	outline: none;
 }
 
