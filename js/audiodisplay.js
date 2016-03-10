@@ -4,6 +4,8 @@ function drawBuffer( width, height, context, data ) {
 	context.fillStyle = '#373A3C';
 	context.lineWidth = 2;
 	context.clearRect(0, 0, width, height);
+	console.log(step);
+	console.log(amp);
 	for (var i = 0; i < width; i++) {
 		var min = 1.0;
 		var max = -1.0;
