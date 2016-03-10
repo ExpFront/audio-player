@@ -108,7 +108,7 @@ function updateAnalysers(time) {
 	}
 
 	recorder_duration.innerHTML = getDuration(initialDate);
-
+	console.log(audioRecorder.getBuffers(gotBuffers));
 	// analyzer draw code here
 	{
 		var SPACING = 3;
