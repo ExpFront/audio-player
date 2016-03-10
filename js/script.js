@@ -304,4 +304,4 @@ function rec() {
 }
 
 var rec = document.querySelector('.record');
-rec.onclick = rec;
+console.log(rec);
