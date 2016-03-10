@@ -137,7 +137,6 @@ function updateAnalysers(time) {
 		//
 		var sliceWidth = canvasWidth / bufferLength;
 		console.log(sliceWidth);
-		console.log(dataArray);
 		// var x = 0;
 		//
 		// for(var i = 0; i < bufferLength; i++) {
@@ -166,7 +165,7 @@ function updateAnalysers(time) {
 			var max = -1.0;
 
 			for (j = 0; j < step; j++) {
-				var datum = 0.00005;
+				var datum = dataArray[(i * step) + j];
 
 				if (datum < min) {
 					min = datum;
