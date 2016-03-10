@@ -297,7 +297,9 @@ function recor() {
 	var microphone = Object.create(WaveSurfer.Microphone);
 
 	microphone.init({
-		wavesurfer: wavesurfer
+		wavesurfer: wavesurfer,
+		interact: true,
+		waveColor: red
 	});
 
 	microphone.start();

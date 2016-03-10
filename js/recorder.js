@@ -104,6 +104,7 @@
 	Recorder.setupDownload = function(blob, filename) {
 		var file = (window.URL || window.webkitURL).createObjectURL(blob);
 		var btn_upload = document.querySelector('.btn-upload');
+		var play = document.querySelector('.play');
 
 		btn_upload.onclick = function() {
 			$.ajax({
@@ -122,8 +123,8 @@
 			progressColor: 'purple'
 		});
 
-		var play = document.querySelector('.play');
 		wavesurfer.load(file);
+
 		play.onclick = function() {
 			console.log(file);
 			wavesurfer.playPause();
