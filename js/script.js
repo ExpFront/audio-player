@@ -32,7 +32,7 @@ function gotBuffers(buffers) {
 		// drawBuffer(canvas.width, canvas.height, canvas.getContext('2d'), buffers[0]);
 
 		var wavesurfer = WaveSurfer.create({
-			container: '#analyser',
+			container: '#waveform',
 			waveColor: 'violet',
 			progressColor: 'purple'
 		});
