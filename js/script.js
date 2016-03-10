@@ -137,7 +137,7 @@ function updateAnalysers(time) {
 		//
 		var sliceWidth = canvasWidth / bufferLength;
 		console.log(sliceWidth);
-		console.log(bufferLength);
+		console.log(dataArray);
 		// var x = 0;
 		//
 		// for(var i = 0; i < bufferLength; i++) {
