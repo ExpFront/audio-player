@@ -123,7 +123,8 @@
 		var wavesurfer = WaveSurfer.create({
 			container: '#waveform',
 			waveColor: '#2d83d9 ',
-			progressColor: '#eff6fc'
+			progressColor: '#eff6fc',
+			cursorWidth: 50
 		});
 
 		wavesurfer.load(file);
