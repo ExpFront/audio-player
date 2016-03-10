@@ -140,7 +140,7 @@ function updateAnalysers(time) {
 		// var x = 0;
 		//
 		// for(var i = 0; i < bufferLength; i++) {
-		// 	var v = dataArray[i] / 128.0;
+			// var v = dataArray[i] / 128.0;
 		// 	var y = v * canvasHeight / 2;
 		//
 		// 	if(i === 0) {
@@ -160,13 +160,14 @@ function updateAnalysers(time) {
 		analyserContext.lineWidth = 2;
 		analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
 
+		var v = dataArray[i] / 128.0;
+		console.log(v);
 		for (var i = 0; i < canvasWidth; i++) {
 			var min = 1.0;
 			var max = -1.0;
 
 			for (j = 0; j < step; j++) {
 				var datum = dataArray[(i * step) + j];
-				console.log(datum);
 
 				if (datum < min) {
 					min = datum;
