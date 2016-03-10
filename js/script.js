@@ -124,8 +124,8 @@ function updateAnalysers(time) {
 	// 	// // analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
 	// 	// // analyserContext.fillStyle = '#373A3C';
 	// 	// // analyserContext.lineCap = 'round';
-	// 	// var bufferLength = analyserNode.frequencyBinCount;
-	// 	// var dataArray = new Uint8Array(bufferLength);
+		var bufferLength = analyserNode.frequencyBinCount;
+		var dataArray = new Uint8Array(bufferLength);
 	// 	// //
 	// 	// // analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
 	// 	// analyserNode.getByteTimeDomainData(dataArray);
@@ -164,7 +164,7 @@ function updateAnalysers(time) {
 	// 	// analyserContext.lineWidth = 2;
 	// 	// analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
 	// 	//
-	// 	// var v = dataArray[i] / 128.0;
+		var v = dataArray[i] / 128.0;
 	// 	// console.log(v);
 	// 	// for (var i = 0; i < canvasWidth; i++) {
 	// 	// 	var min = 1.0;
@@ -220,6 +220,9 @@ function updateAnalysers(time) {
 		data: data
 	});
 
+	var bufferLength = analyserNode.frequencyBinCount;
+	var dataArray = new Uint8Array(bufferLength);
+
 	var ctx = waveform.context;
 	console.log(ctx);
 	var gradient = ctx.createLinearGradient(0, 0, 0, waveform.height);
@@ -228,7 +231,9 @@ function updateAnalysers(time) {
 	waveform.innerColor = gradient;
 
 	var i = 0;
-	setInterval(function(){
+	setInterval(function() {
+		var v = dataArray[i] / 128.0;
+		console.log(v);
 		data.push(Math.cos(i++ / 25) - 0.2 + Math.random()*0.3);
 		waveform.update({
 			data: data
