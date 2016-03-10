@@ -289,23 +289,3 @@ window.addEventListener('load', initAudio);
 btn_record.addEventListener('click', startRecording);
 btn_repeat.addEventListener('click', startRecording);
 button_type_stop.addEventListener('click', stopRecording);
-
-function recor() {
-	var wavesurfer = WaveSurfer.create({ container: '#waveform', waveColor: 'violet' });
-
-	var microphone = Object.create(WaveSurfer.Microphone);
-
-	microphone.init({
-		wavesurfer: wavesurfer,
-		interact: true,
-		waveColor: red
-	});
-
-	microphone.start();
-}
-
-var rec = document.querySelector('.record');
-rec.onclick = function() {
-	console.log(rec);
-	recor();
-}
