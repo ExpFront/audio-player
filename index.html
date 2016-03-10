@@ -51,6 +51,14 @@
 			</div>
 		</div>
 	</div>
+	<div id="test"></div>
+	<script src="js/waveform.js"></script>
+	<script>
+	var waveform = new Waveform({
+		container: document.getElementById("test"),
+		data: [1, 0.2, 0.5]
+	});
+	</script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.0.52/wavesurfer.min.js"></script>
 	<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 	<script src="js/audiodisplay.js"></script>
