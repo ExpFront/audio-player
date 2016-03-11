@@ -110,8 +110,8 @@ function updateAnalysers(time) {
 		analyserContext = canvas.getContext('2d');
 	}
 
-	var left = e.inputBuffer.getChannelData(0);
 	console.log(time);
+	var left = e.inputBuffer.getChannelData(0);
 	recorder_duration.innerHTML = getDuration(initialDate);
 
 	{
