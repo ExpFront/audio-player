@@ -218,6 +218,7 @@ function updateAnalysers(time) {
 
 		var freqByteData = new Uint8Array(analyserNode.frequencyBinCount);
 		analyserNode.getByteFrequencyData(freqByteData);
+
 		var data = [];
 
 		var waveform = new Waveform({
@@ -234,6 +235,7 @@ function updateAnalysers(time) {
 
 		var i = 0;
 		setInterval(function() {
+			var a = freqByteData[i] / 128.0;
 			var v = dataArray[i] / 128.0;
 
 			var pushed = v / 50 - 0.2 + Math.random()*0.3;
