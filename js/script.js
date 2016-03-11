@@ -28,7 +28,7 @@ function saveAudio() {
 
 function gotBuffers(buffers) {
 		var canvas = document.querySelector('.wavedisplay');
-
+		console.log(buffers);
 		// drawBuffer(canvas.width, canvas.height, canvas.getContext('2d'), buffers[0]);
 
 		// slider.oninput = function () {
@@ -166,14 +166,12 @@ function updateAnalysers(time) {
 			analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
 		// 	//
 			var v = dataArray[i] / 128.0;
-			console.log(v);
 			for (var i = 0; i < canvasWidth; i++) {
 				var min = 1.0;
 				var max = -1.0;
 
 				for (j = 0; j < step; j++) {
 					var datum = dataArray[(i * step) + j];
-					console.log(datum);
 					if (datum < min) {
 						min = datum;
 					}
