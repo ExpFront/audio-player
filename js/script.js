@@ -231,6 +231,7 @@ function updateAnalysers(time) {
 		var SPACING = 3;
 		var BAR_WIDTH = 1;
 		var numBars = Math.round(canvasWidth / SPACING);
+
 		var freqByteData = new Uint8Array(analyserNode.frequencyBinCount);
 
 		analyserNode.getByteFrequencyData(freqByteData);
@@ -254,8 +255,6 @@ function updateAnalysers(time) {
 			waveform.update({
 				data: data
 			});
-			analyserContext.fillStyle = 'hsl( ' + Math.round((i * 360) / numBars) + ', 100%, 50%)';
-			analyserContext.fillRect(i * SPACING, canvasHeight, BAR_WIDTH, -magnitude);
 		}
 
 	}
