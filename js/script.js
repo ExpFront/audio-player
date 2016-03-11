@@ -66,7 +66,7 @@ function startRecording() {
 		return;
 	}
 
-	initialDate = new Date
+	initialDate = new Date;
 	btn_record.classList.add('recording');
 	btn_record.style.display = 'none';
 	btn_play.style.display = 'none';
