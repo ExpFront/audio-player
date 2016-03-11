@@ -146,18 +146,24 @@ function updateAnalysers(time) {
 
 	recorder_duration.innerHTML = getDuration(initialDate);
 
+	{
+		var ctx = waveform.context;
+		var gradient = ctx.createLinearGradient(0, 0, 0, waveform.height);
+		gradient.addColorStop(0.0, "#f60");
+		gradient.addColorStop(1.0, "#ff1b00");
+		waveform.innerColor = gradient;
 
-	var ctx = waveform.context;
-	var gradient = ctx.createLinearGradient(0, 0, 0, waveform.height);
-	gradient.addColorStop(0.0, "#f60");
-	gradient.addColorStop(1.0, "#ff1b00");
-	waveform.innerColor = gradient;
+		var i = 0;
+		setInterval(function() {
+			var pushed =  Math.cos(i++/25) - 0.2 + Math.random()*0.3;
+			console.log(pushed)
+			data.push(pushed);
 
-	var pushed = Math.cos(i++/25) - 0.2 + Math.random()*0.3;
-	data.push(pushed);
-	waveform.update({
-		data: data
-	});
+			waveform.update({
+				data: data
+			});
+		}, 50);
+	}
 
 	rafID = window.requestAnimationFrame(updateAnalysers);
 }
