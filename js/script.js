@@ -73,7 +73,7 @@ function startRecording() {
 	updateAnalysers();
 }
 
-showWave(buffer) {
+function showWave(buffer) {
 	console.log(buffer);
 }
 
