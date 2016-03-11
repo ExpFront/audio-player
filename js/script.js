@@ -20,6 +20,8 @@ var btn_play = document.querySelector('.btn-play');
 var btn_repeat = document.querySelector('.btn-repeat');
 var initialDate;
 
+var data = [];
+
 function saveAudio() {
 		audioRecorder.exportWAV(doneEncoding);
 		// could get mono instead by saying
@@ -73,7 +75,6 @@ function startRecording() {
 }
 
 function showWave(buffer) {
-	var data = [];
 	console.log(buffer);
 
 	var waveform = new Waveform({
