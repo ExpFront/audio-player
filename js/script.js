@@ -112,11 +112,6 @@ function updateAnalysers(time) {
 
 	recorder_duration.innerHTML = getDuration(initialDate);
 
-	rafID = window.requestAnimationFrame(updateAnalysers);
-}
-
-function drawWave() {
-
 	{
 		// analyzer draw code here
 		// {
@@ -218,8 +213,6 @@ function drawWave() {
 		// }
 		//
 		// rafID = window.requestAnimationFrame(updateAnalysers);
-		var test = document.querySelector('#test');
-		test.innerHTML = '';
 		var data = [0.5, 1.0, 0.5, 1.0];
 
 		var waveform = new Waveform({
@@ -245,6 +238,8 @@ function drawWave() {
 			});
 		}, 50);
 	}
+
+	rafID = window.requestAnimationFrame(updateAnalysers);
 }
 
 function getDuration(initialDate) {
