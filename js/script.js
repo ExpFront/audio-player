@@ -85,7 +85,7 @@ function showRecordingWave(buffer) {
 		gradient.addColorStop(1.0, "#ff1b00");
 		waveform.innerColor = gradient;
 
-		var pushed =  Math.cos(i++/25) - 0.2 + Math.random()*0.3;
+		var pushed =  buffer[0][0];
 		console.log('pushed' + pushed);
 		console.log(buffer[0][0])
 		data.push(pushed);
