@@ -22,7 +22,7 @@ var initialDate;
 var i = 0;
 var data = [];
 var waveform = new Waveform({
-	container: document.querySelector('.wave-recorded'),
+	container: document.getElementById("test"),
 	interpolate: false
 });
 
