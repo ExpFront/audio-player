@@ -75,7 +75,7 @@ function startRecording() {
 function showWave(buffer) {
 	var data = [];
 	console.log(buffer);
-	
+
 	var waveform = new Waveform({
 		container: document.getElementById("test"),
 		interpolate: false
@@ -89,7 +89,7 @@ function showWave(buffer) {
 
 	var i = 0;
 	setInterval(function() {
-		var pushed = buffer[i++] / 50 - 0.2 + Math.random()*0.3;
+		var pushed = buffer[i++];
 
 		data.push(pushed);
 
