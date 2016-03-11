@@ -88,16 +88,23 @@ function showWave(buffer) {
 	gradient.addColorStop(1.0, "#ff1b00");
 	waveform.innerColor = gradient;
 
-	var i = 0;
-	setInterval(function() {
-		var pushed = buffer[0];
-		console.log(buffer[0])
-		data.push(pushed);
+	var pushed = buffer[0];
+	data.push(pushed);
 
-		waveform.update({
-			data: data
-		});
-	}, 50);
+	waveform.update({
+		data: data
+	});
+
+	// var i = 0;
+	// setInterval(function() {
+	// 	var pushed = buffer[0];
+	// 	console.log(buffer[0])
+	// 	data.push(pushed);
+	//
+	// 	waveform.update({
+	// 		data: data
+	// 	});
+	// }, 50);
 
 }
 
