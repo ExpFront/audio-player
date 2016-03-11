@@ -102,7 +102,7 @@
 	};
 
 	Recorder.setupDownload = function(blob, filename) {
-		var file = (window.URL || window.webkitURL).createObjectURL(blob);
+		var url = (window.URL || window.webkitURL).createObjectURL(blob);
 		var btn_upload = document.querySelector('.btn-upload');
 		var btn_play = document.querySelector('.btn-play');
 
@@ -110,7 +110,7 @@
 			$.ajax({
 				type: 'POST',
 				url: 'server_path',
-				data: file,
+				data: url,
 				contentType: false,
 				cache: false,
 				processData: false
