@@ -110,7 +110,6 @@ function updateAnalysers(time) {
 			analyserContext = canvas.getContext('2d');
 	}
 	var recorder_duration = document.querySelector('.recorder-duration');
-	recorder_duration.innerHTML = duration;
 	// analyzer draw code here
 	{
 		var SPACING = 3;
