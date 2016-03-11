@@ -28,7 +28,7 @@ function saveAudio() {
 
 function gotBuffers(buffers) {
 		var canvas = document.querySelector('.wavedisplay');
-		console.log(buffers);
+
 		// drawBuffer(canvas.width, canvas.height, canvas.getContext('2d'), buffers[0]);
 
 		// slider.oninput = function () {
@@ -109,38 +109,138 @@ function updateAnalysers(time) {
 		canvasHeight = canvas.height;
 		analyserContext = canvas.getContext('2d');
 	}
-	var recorder_duration = document.querySelector('.recorder-duration');
-	// analyzer draw code here
+
+	recorder_duration.innerHTML = getDuration(initialDate);
+
 	{
-		var SPACING = 3;
-		var BAR_WIDTH = 1;
-		var numBars = Math.round(canvasWidth / SPACING);
-		var freqByteData = new Uint8Array(analyserNode.frequencyBinCount);
+		// analyzer draw code here
+		// {
+		// 	// var SPACING = 3;
+		// 	// var BAR_WIDTH = 1;
+		// 	// // var numBars = Math.round(canvasWidth / SPACING);
+		// 	// var freqByteData = new Uint8Array(analyserNode.frequencyBinCount);
+		// 	// console.log(freqByteData);
+		// 	// //
+		// 	// //
+		// 	// // analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
+		// 	// // analyserContext.fillStyle = '#373A3C';
+		// 	// // analyserContext.lineCap = 'round';
+			var bufferLength = analyserNode.frequencyBinCount;
+			var dataArray = new Uint8Array(bufferLength);
+		// 	// //
+		// 	// // analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
+			analyserNode.getByteFrequencyData(dataArray);
+			var arr = dataArray.getChannelData(0);
+		// 	// //
+		// 	// // analyserContext.fillStyle = '#F8F8F8';
+		// 	// // analyserContext.fillRect(0, 0, canvasWidth, canvasHeight);
+		// 	// //
+		// 	// //
+		// 	// // analyserContext.lineWidth = 2;
+		// 	// // analyserContext.strokeStyle = '#373A3C';
+		// 	// // analyserContext.lineCap = 'round';
+		// 	// //
+		// 	// // analyserContext.beginPath();
+		// 	// //
+		// 	// var sliceWidth = canvasWidth / bufferLength;
+		// 	// // var x = 0;
+		// 	// //
+		// 	// // for(var i = 0; i < bufferLength; i++) {
+		// 	// 	// var v = dataArray[i] / 128.0;
+		// 	// // 	var y = v * canvasHeight / 2;
+		// 	// //
+		// 	// // 	if(i === 0) {
+		// 	// // 		analyserContext.moveTo(x, y);
+		// 	// // 	} else {
+		// 	// // 		analyserContext.lineTo(x, y);
+		// 	// // 	}
+		// 	// //
+		// 	// // 	x += sliceWidth;
+		// 	// // }
+		// 	// //
+		// 	// // analyserContext.lineTo(canvasWidth, canvasHeight / 2);
+		// 	// // analyserContext.stroke();
+		// 	// var step = Math.ceil( dataArray.length / canvasWidth );
+		// 	// var amp = canvasHeight / 2;
+		// 	// analyserContext.fillStyle = '#373A3C';
+		// 	// analyserContext.lineWidth = 2;
+		// 	// analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
+		// 	//
+			// var v = dataArray[i] / 128.0;
+		// 	// console.log(v);
+		// 	// for (var i = 0; i < canvasWidth; i++) {
+		// 	// 	var min = 1.0;
+		// 	// 	var max = -1.0;
+		// 	//
+		// 	// 	for (j = 0; j < step; j++) {
+		// 	// 		var datum = dataArray[(i * step) + j];
+		// 	//
+		// 	// 		if (datum < min) {
+		// 	// 			min = datum;
+		// 	// 		}
+		// 	//
+		// 	// 		if (datum > max) {
+		// 	// 			max = datum;
+		// 	// 		}
+		// 	// 	}
+		// 	// 	analyserContext.fillRect(i, (1 + min) * amp, 1, Math.max(1, (max - min) * amp));
+		// 	// }
+		//
+		// 	var SPACING = 3;
+		// 	var BAR_WIDTH = 1;
+		// 	var numBars = Math.round(canvasWidth / SPACING);
+		// 	var freqByteData = new Uint8Array(analyserNode.frequencyBinCount);
+		//
+		// 	analyserNode.getByteFrequencyData(freqByteData);
+		//
+		// 	analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
+		// 	analyserContext.fillStyle = '#F6D565';
+		// 	analyserContext.lineCap = 'round';
+		// 	var multiplier = analyserNode.frequencyBinCount / numBars;
+		//
+		// 	// Draw rectangle for each frequency bin.
+		// 	for (var i = 0; i < numBars; ++i) {
+		// 			var magnitude = 0;
+		// 			var offset = Math.floor( i * multiplier );
+		// 			// gotta sum/average the block, or we miss narrow-bandwidth spikes
+		// 			for (var j = 0; j< multiplier; j++) {
+		// 				magnitude += freqByteData[offset + j];
+		// 			}
+		// 			magnitude = magnitude / multiplier;
+		// 			var magnitude2 = freqByteData[i * multiplier];
+		// 			analyserContext.fillStyle = "hsl( " + Math.round((i * 360) / numBars) + ", 100%, 50%)";
+		// 			analyserContext.fillRect(i * SPACING, canvasHeight, BAR_WIDTH, -magnitude);
+		// 	}
+		// }
+		//
+		// rafID = window.requestAnimationFrame(updateAnalysers);
+		var data = [];
 
-		analyserNode.getByteFrequencyData(freqByteData);
+		var waveform = new Waveform({
+			container: document.getElementById("test"),
+			interpolate: false,
+			data: data
+		});
 
-		analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
-		analyserContext.fillStyle = '#373A3C';
-		analyserContext.lineCap = 'round';
-		var multiplier = analyserNode.frequencyBinCount / numBars;
-		// Draw rectangle for each frequency bin.
-		for (var i = 0; i < numBars; ++i) {
-			var magnitude = 0;
-			var offset = Math.floor( i * multiplier );
-			// gotta sum/average the block, or we miss narrow-bandwidth spikes
-			for (var j = 0; j < multiplier; j++) {
-				magnitude += freqByteData[offset + j];
-			}
+		var ctx = waveform.context;
+		var gradient = ctx.createLinearGradient(0, 0, 0, waveform.height);
+		gradient.addColorStop(0.0, "#f60");
+		gradient.addColorStop(1.0, "#ff1b00");
+		waveform.innerColor = gradient;
 
-			magnitude = magnitude / multiplier;
-			var magnitude2 = freqByteData[i * multiplier];
-			console.log(-magnitude);
-			analyserContext.fillStyle = 'hsl( ' + Math.round((i * 360) / numBars) + ', 100%, 50%)';
-			analyserContext.fillRect(i * SPACING, canvasHeight, BAR_WIDTH, -magnitude);
-		}
+		var i = 0;
+		setInterval(function() {
+			var v = dataArray[i] / 128.0;
+
+			var pushed = v / 50 - 0.2 + Math.random()*0.3;
+			data.push(pushed);
+			waveform.update({
+				data: data
+			});
+		}, 50);
 	}
 
-	rafID = window.requestAnimationFrame( updateAnalysers );
+	rafID = window.requestAnimationFrame(updateAnalysers);
 }
 
 function getDuration(initialDate) {
