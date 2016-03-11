@@ -123,7 +123,6 @@ function updateAnalysers(time) {
 		analyserContext.fillStyle = '#373A3C';
 		analyserContext.lineCap = 'round';
 		var multiplier = analyserNode.frequencyBinCount / numBars;
-		console.log(multiplier);
 		// Draw rectangle for each frequency bin.
 		for (var i = 0; i < numBars; ++i) {
 			var magnitude = 0;
@@ -131,6 +130,7 @@ function updateAnalysers(time) {
 			// gotta sum/average the block, or we miss narrow-bandwidth spikes
 			for (var j = 0; j < multiplier; j++) {
 				magnitude += freqByteData[offset + j];
+				console.log(magitude);
 			}
 
 			magnitude = magnitude / multiplier;
