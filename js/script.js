@@ -167,24 +167,24 @@ function updateAnalysers(time) {
 		// 	//
 			var v = dataArray[i] / 128.0;
 		// 	// console.log(v);
-		// 	// for (var i = 0; i < canvasWidth; i++) {
-		// 	// 	var min = 1.0;
-		// 	// 	var max = -1.0;
-		// 	//
-		// 	// 	for (j = 0; j < step; j++) {
-		// 	// 		var datum = dataArray[(i * step) + j];
-		// 	//
-		// 	// 		if (datum < min) {
-		// 	// 			min = datum;
-		// 	// 		}
-		// 	//
-		// 	// 		if (datum > max) {
-		// 	// 			max = datum;
-		// 	// 		}
-		// 	// 	}
-		// 	// 	analyserContext.fillRect(i, (1 + min) * amp, 1, Math.max(1, (max - min) * amp));
-		// 	// }
-		//
+			for (var i = 0; i < canvasWidth; i++) {
+				var min = 1.0;
+				var max = -1.0;
+
+				for (j = 0; j < step; j++) {
+					var datum = dataArray[(i * step) + j];
+					console.log(datum);
+					if (datum < min) {
+						min = datum;
+					}
+
+					if (datum > max) {
+						max = datum;
+					}
+				}
+				// analyserContext.fillRect(i, (1 + min) * amp, 1, Math.max(1, (max - min) * amp));
+			}
+
 		// 	var SPACING = 3;
 		// 	var BAR_WIDTH = 1;
 		// 	var numBars = Math.round(canvasWidth / SPACING);
