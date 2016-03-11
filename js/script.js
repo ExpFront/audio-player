@@ -76,7 +76,6 @@ function startRecording() {
 	audioRecorder.clear();
 	audioRecorder.record();
 	updateAnalysers();
-	audioRecorder.getBuffers(showWave);
 }
 
 function showWave(buffer) {
@@ -147,7 +146,8 @@ function updateAnalysers(time) {
 	}
 
 	recorder_duration.innerHTML = getDuration(initialDate);
-
+	audioRecorder.getBuffers(showWave);
+	
 	rafID = window.requestAnimationFrame(updateAnalysers);
 }
 
