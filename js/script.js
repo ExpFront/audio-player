@@ -237,7 +237,7 @@ function updateAnalysers(time) {
 			var a = freqByteData[i++] / 128.0;
 			var v = dataArray[i] / 128.0;
 
-			var pushed = v / 50 - 0.2 + Math.random()*0.3;
+			var pushed = a / 25 - 0.2 + Math.random()*0.3;
 			data.push(pushed);
 			waveform.update({
 				data: data
