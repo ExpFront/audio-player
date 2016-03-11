@@ -130,7 +130,6 @@ function updateAnalysers(time) {
 		// 	// //
 		// 	// // analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
 			analyserNode.getByteFrequencyData(dataArray);
-			var arr = dataArray.getChannelData(0);
 		// 	// //
 		// 	// // analyserContext.fillStyle = '#F8F8F8';
 		// 	// // analyserContext.fillRect(0, 0, canvasWidth, canvasHeight);
