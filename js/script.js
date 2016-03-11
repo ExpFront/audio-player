@@ -87,7 +87,7 @@ function showRecordingWave(buffer) {
 
 		var pushed =  Math.cos(i++/25) - 0.2 + Math.random()*0.3;
 		console.log('pushed' + pushed);
-		console.log(buffer)
+		console.log(buffer[0])
 		data.push(pushed);
 
 		waveform.update({
