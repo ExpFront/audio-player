@@ -213,6 +213,11 @@ function updateAnalysers(time) {
 		// }
 		//
 		// rafID = window.requestAnimationFrame(updateAnalysers);
+
+
+
+		var freqByteData = new Uint8Array(analyserNode.frequencyBinCount);
+		analyserNode.getByteFrequencyData(freqByteData);
 		var data = [];
 
 		var waveform = new Waveform({
