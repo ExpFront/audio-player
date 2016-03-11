@@ -69,7 +69,6 @@ function startRecording() {
 	recorder_body.style.display = 'block';
 	audioRecorder.clear();
 	audioRecorder.record();
-	audioRecorder.getBuffers(showWave);
 	updateAnalysers();
 }
 
@@ -116,7 +115,7 @@ function updateAnalysers(time) {
 	}
 
 	recorder_duration.innerHTML = getDuration(initialDate);
-
+	audioRecorder.getBuffers(showWave);
 	{
 		// analyzer draw code here
 		// {
