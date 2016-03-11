@@ -110,8 +110,6 @@ function updateAnalysers(time) {
 		analyserContext = canvas.getContext('2d');
 	}
 
-	console.log(time);
-	var left = e.inputBuffer.getChannelData(0);
 	recorder_duration.innerHTML = getDuration(initialDate);
 
 	{
@@ -216,7 +214,7 @@ function updateAnalysers(time) {
 		// }
 		//
 		// rafID = window.requestAnimationFrame(updateAnalysers);
-		var data = [0.5, 1.0, 0.5, 1.0];
+		var data = [];
 
 		var waveform = new Waveform({
 			container: document.getElementById("test"),
