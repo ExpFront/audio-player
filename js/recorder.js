@@ -126,7 +126,7 @@
 			progressColor: '#eff6fc'
 		});
 
-		wavesurfer.load(file);
+		wavesurfer.load(url);
 
 		btn_play.onclick = function() {
 			console.log(file);
