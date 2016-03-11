@@ -78,7 +78,7 @@ function startRecording() {
 	updateAnalysers();
 }
 
-function showWave(buffer) {
+function showRecordingWave(buffer) {
 		var ctx = waveform.context;
 		var gradient = ctx.createLinearGradient(0, 0, 0, waveform.height);
 		gradient.addColorStop(0.0, "#f60");
@@ -86,7 +86,8 @@ function showWave(buffer) {
 		waveform.innerColor = gradient;
 
 		var pushed =  Math.cos(i++/25) - 0.2 + Math.random()*0.3;
-		console.log(pushed)
+		console.log('pushed' + pushed);
+		console.log(buffer)
 		data.push(pushed);
 
 		waveform.update({
@@ -134,7 +135,7 @@ function updateAnalysers(time) {
 
 	recorder_duration.innerHTML = getDuration(initialDate);
 
-	audioRecorder.getBuffers(showWave);
+	audioRecorder.getBuffers(showRecordingWave);
 
 	rafID = window.requestAnimationFrame(updateAnalysers);
 }
