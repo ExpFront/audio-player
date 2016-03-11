@@ -133,8 +133,8 @@ function updateAnalysers(time) {
 			}
 
 			magnitude = magnitude / multiplier;
-			console.log(magnitude);
 			var magnitude2 = freqByteData[i * multiplier];
+			console.log(magnitude2);
 			analyserContext.fillStyle = 'hsl( ' + Math.round((i * 360) / numBars) + ', 100%, 50%)';
 			analyserContext.fillRect(i * SPACING, canvasHeight, BAR_WIDTH, -magnitude);
 		}
