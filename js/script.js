@@ -240,6 +240,7 @@ function updateAnalysers(time) {
 
 			var pushed = v / 50 - 0.2 + Math.random()*0.3;
 			data.push(pushed);
+			i++;
 			waveform.update({
 				data: data
 			});
