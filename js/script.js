@@ -21,6 +21,10 @@ var btn_repeat = document.querySelector('.btn-repeat');
 var initialDate;
 
 var data = [];
+var waveform = new Waveform({
+	container: document.getElementById("test"),
+	interpolate: false
+});
 
 function saveAudio() {
 		audioRecorder.exportWAV(doneEncoding);
@@ -77,11 +81,6 @@ function startRecording() {
 
 function showWave(buffer) {
 	console.log(buffer);
-
-	var waveform = new Waveform({
-		container: document.getElementById("test"),
-		interpolate: false
-	});
 
 	var ctx = waveform.context;
 	var gradient = ctx.createLinearGradient(0, 0, 0, waveform.height);
