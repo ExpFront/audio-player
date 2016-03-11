@@ -117,11 +117,11 @@
 			});
 		};
 
-		var wave = document.querySelector('#waveform'); // To clear after repeat
+		var wave = document.querySelector('.waveform'); // To clear after repeat
 		wave.innerHTML = '';
 
 		var wavesurfer = WaveSurfer.create({
-			container: '#waveform',
+			container: '.waveform',
 			waveColor: '#2d83d9 ',
 			progressColor: '#eff6fc'
 		});
