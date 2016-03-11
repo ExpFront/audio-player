@@ -130,10 +130,10 @@ function updateAnalysers(time) {
 			// gotta sum/average the block, or we miss narrow-bandwidth spikes
 			for (var j = 0; j < multiplier; j++) {
 				magnitude += freqByteData[offset + j];
-				console.log(magnitude);
 			}
 
 			magnitude = magnitude / multiplier;
+			console.log(magnitude);
 			var magnitude2 = freqByteData[i * multiplier];
 			analyserContext.fillStyle = 'hsl( ' + Math.round((i * 360) / numBars) + ', 100%, 50%)';
 			analyserContext.fillRect(i * SPACING, canvasHeight, BAR_WIDTH, -magnitude);
