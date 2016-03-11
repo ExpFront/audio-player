@@ -130,7 +130,7 @@ function updateAnalysers(time) {
 			// gotta sum/average the block, or we miss narrow-bandwidth spikes
 			for (var j = 0; j < multiplier; j++) {
 				magnitude += freqByteData[offset + j];
-				console.log(magitude);
+				console.log(magnitude);
 			}
 
 			magnitude = magnitude / multiplier;
