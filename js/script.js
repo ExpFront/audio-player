@@ -221,6 +221,7 @@ function updateAnalysers(time) {
 			data: data
 		});
 
+		console.log(dataArray.getChannelData());
 		var ctx = waveform.context;
 		var gradient = ctx.createLinearGradient(0, 0, 0, waveform.height);
 		gradient.addColorStop(0.0, "#f60");
