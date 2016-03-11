@@ -74,7 +74,8 @@ function startRecording() {
 
 function showWave(buffer) {
 	var data = [];
-
+	console.log(buffer);
+	
 	var waveform = new Waveform({
 		container: document.getElementById("test"),
 		interpolate: false
@@ -96,7 +97,7 @@ function showWave(buffer) {
 			data: data
 		});
 	}, 50);
-	console.log(buffer);
+
 }
 
 function stopRecording() {
