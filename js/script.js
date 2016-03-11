@@ -223,8 +223,7 @@ function updateAnalysers(time) {
 
 		var waveform = new Waveform({
 			container: document.getElementById("test"),
-			interpolate: false,
-			data: data
+			interpolate: false
 		});
 
 		var ctx = waveform.context;
