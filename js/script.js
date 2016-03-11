@@ -69,7 +69,12 @@ function startRecording() {
 	recorder_body.style.display = 'block';
 	audioRecorder.clear();
 	audioRecorder.record();
+	audioRecorder.getBuffers(showWave);
 	updateAnalysers();
+}
+
+showWave(buffer) {
+	console.log(buffer);
 }
 
 function stopRecording() {
@@ -125,11 +130,11 @@ function updateAnalysers(time) {
 		// 	// // analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
 		// 	// // analyserContext.fillStyle = '#373A3C';
 		// 	// // analyserContext.lineCap = 'round';
-		// 	var bufferLength = analyserNode.frequencyBinCount;
-		// 	var dataArray = new Uint8Array(bufferLength);
-			//
-		// // 	// // analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
-		// 	analyserNode.getByteFrequencyData(dataArray);
+			var bufferLength = analyserNode.frequencyBinCount;
+			var dataArray = new Uint8Array(bufferLength);
+		// 	// //
+		// 	// // analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
+			analyserNode.getByteFrequencyData(dataArray);
 		// 	// //
 		// 	// // analyserContext.fillStyle = '#F8F8F8';
 		// 	// // analyserContext.fillRect(0, 0, canvasWidth, canvasHeight);
@@ -214,6 +219,11 @@ function updateAnalysers(time) {
 		//
 		// rafID = window.requestAnimationFrame(updateAnalysers);
 
+
+
+		var freqByteData = new Uint8Array(analyserNode.frequencyBinCount);
+		analyserNode.getByteFrequencyData(freqByteData);
+
 		var data = [];
 
 		var waveform = new Waveform({
@@ -227,36 +237,17 @@ function updateAnalysers(time) {
 		gradient.addColorStop(1.0, "#ff1b00");
 		waveform.innerColor = gradient;
 
+		var i = 0;
+		setInterval(function() {
+			var a = freqByteData[i++] / 128.0;
+			var v = dataArray[i] / 128.0;
 
-		var SPACING = 3;
-		var BAR_WIDTH = 1;
-		var numBars = Math.round(canvasWidth / SPACING);
-
-		var freqByteData = new Uint8Array(analyserNode.frequencyBinCount);
-
-		analyserNode.getByteFrequencyData(freqByteData);
-
-		analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
-
-		var multiplier = analyserNode.frequencyBinCount / numBars;
-		// Draw rectangle for each frequency bin.
-		for (var i = 0; i < numBars; ++i) {
-			var magnitude = 0;
-			var offset = Math.floor( i * multiplier );
-			// gotta sum/average the block, or we miss narrow-bandwidth spikes
-			for (var j = 0; j < multiplier; j++) {
-				magnitude += freqByteData[offset + j];
-			}
-
-			magnitude = magnitude / multiplier;
-			var magnitude2 = freqByteData[i * multiplier];
-			console.log(-magnitude);
-			data.push(-magnitude);
+			var pushed = a / 50 - 0.2 + Math.random()*0.3;
+			data.push(pushed);
 			waveform.update({
 				data: data
 			});
-		}
-
+		}, 50);
 	}
 
 	rafID = window.requestAnimationFrame(updateAnalysers);
