@@ -111,7 +111,7 @@ function updateAnalysers(time) {
 	}
 
 	var left = e.inputBuffer.getChannelData(0);
-	console.log(left);
+	console.log(time);
 	recorder_duration.innerHTML = getDuration(initialDate);
 
 	{
