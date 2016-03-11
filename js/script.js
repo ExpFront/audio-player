@@ -135,7 +135,6 @@ function updateAnalysers(time) {
 		var canvas = document.querySelector('.wave');
 		canvasWidth = canvas.width;
 		canvasHeight = canvas.height;
-		analyserContext = canvas.getContext('2d');
 	}
 
 	recorder_duration.innerHTML = getDuration(initialDate);
