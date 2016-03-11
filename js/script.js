@@ -136,6 +136,7 @@ function cancelAnalyserUpdates() {
 	rafID = null;
 }
 
+var i = 0;
 function updateAnalysers(time) {
 	if (!analyserContext) {
 		var canvas = document.querySelector('.wavedisplay');
@@ -153,16 +154,13 @@ function updateAnalysers(time) {
 		gradient.addColorStop(1.0, "#ff1b00");
 		waveform.innerColor = gradient;
 
-		var i = 0;
-		setInterval(function() {
-			var pushed =  Math.cos(i++/25) - 0.2 + Math.random()*0.3;
-			console.log(pushed)
-			data.push(pushed);
+		var pushed =  Math.cos(i++/25) - 0.2 + Math.random()*0.3;
+		console.log(pushed)
+		data.push(pushed);
 
-			waveform.update({
-				data: data
-			});
-		}, 50);
+		waveform.update({
+			data: data
+		});
 	}
 
 	rafID = window.requestAnimationFrame(updateAnalysers);
