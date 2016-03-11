@@ -90,7 +90,7 @@ function showWave(buffer) {
 	var i = 0;
 	setInterval(function() {
 		var pushed = buffer[i++];
-
+		console.log(buffer[0])
 		data.push(pushed);
 
 		waveform.update({
