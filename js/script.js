@@ -22,7 +22,7 @@ var initialDate;
 var i = 0;
 var data = [];
 var waveform = new Waveform({
-	container: document.querySelector('.wave'),
+	container: document.getElementById("test"),
 	interpolate: false
 });
 
@@ -33,7 +33,7 @@ function saveAudio() {
 }
 
 function gotBuffers(buffers) {
-		// var canvas = document.querySelector('.wavedisplay');
+		var canvas = document.querySelector('.wavedisplay');
 
 		// drawBuffer(canvas.width, canvas.height, canvas.getContext('2d'), buffers[0]);
 
@@ -132,9 +132,10 @@ function cancelAnalyserUpdates() {
 
 function updateAnalysers(time) {
 	if (!analyserContext) {
-		var canvas = document.querySelector('.wave');
+		var canvas = document.querySelector('.wavedisplay');
 		canvasWidth = canvas.width;
 		canvasHeight = canvas.height;
+		analyserContext = canvas.getContext('2d');
 	}
 
 	recorder_duration.innerHTML = getDuration(initialDate);
