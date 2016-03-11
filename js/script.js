@@ -104,10 +104,10 @@ function cancelAnalyserUpdates() {
 
 function updateAnalysers(time) {
 	if (!analyserContext) {
-			var canvas = document.querySelector('.wavedisplay');
-			canvasWidth = canvas.width;
-			canvasHeight = canvas.height;
-			analyserContext = canvas.getContext('2d');
+		var canvas = document.querySelector('.wavedisplay');
+		canvasWidth = canvas.width;
+		canvasHeight = canvas.height;
+		analyserContext = canvas.getContext('2d');
 	}
 	var recorder_duration = document.querySelector('.recorder-duration');
 	// analyzer draw code here
@@ -123,7 +123,7 @@ function updateAnalysers(time) {
 		analyserContext.fillStyle = '#373A3C';
 		analyserContext.lineCap = 'round';
 		var multiplier = analyserNode.frequencyBinCount / numBars;
-
+		console.log(multiplier);
 		// Draw rectangle for each frequency bin.
 		for (var i = 0; i < numBars; ++i) {
 			var magnitude = 0;
