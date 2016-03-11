@@ -78,7 +78,7 @@ function startRecording() {
 }
 
 function showRecordingWave(buffer) {
-	for (i; i < buffer[0].length; ++i) {
+	for (i; i < buffer[0].length; ++i) { // fit all elements
 		for (var j = 0; j < buffer[0][i].length; j++) {
 			console.log('ye');
 		}
@@ -89,7 +89,7 @@ function showRecordingWave(buffer) {
 		gradient.addColorStop(0.0, "#f60");
 		gradient.addColorStop(1.0, "#ff1b00");
 		waveform.innerColor = gradient;
-		var pushed =  Math.cos(i++/25) - 0.2 + Math.random() * buffer[0][0];
+		var pushed =  Math.cos(i++/25) - 0.2 + Math.random() * 0.3;
 		console.log('pushed' + pushed);
 		console.log(buffer[0][0])
 		data.push(pushed);
