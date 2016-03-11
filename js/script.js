@@ -79,6 +79,12 @@ function startRecording() {
 }
 
 function showRecordingWave(buffer) {
+	for (i; i < buffer[0].length; ++i) {
+		for (var j = 0; j < buffer[0][i].length; j++) {
+			console.log('ye');
+		}
+	}
+
 		var ctx = waveform.context;
 		var gradient = ctx.createLinearGradient(0, 0, 0, waveform.height);
 		gradient.addColorStop(0.0, "#f60");
