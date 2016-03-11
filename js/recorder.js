@@ -129,7 +129,6 @@
 		wavesurfer.load(url);
 
 		btn_play.onclick = function() {
-			console.log(file);
 			wavesurfer.playPause();
 		};
 
