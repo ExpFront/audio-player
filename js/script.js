@@ -166,7 +166,7 @@ function updateAnalysers(time) {
 			analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
 		// 	//
 			var v = dataArray[i] / 128.0;
-		// 	// console.log(v);
+			console.log(v);
 			for (var i = 0; i < canvasWidth; i++) {
 				var min = 1.0;
 				var max = -1.0;
