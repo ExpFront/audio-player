@@ -159,11 +159,11 @@ function updateAnalysers(time) {
 		// 	// //
 		// 	// // analyserContext.lineTo(canvasWidth, canvasHeight / 2);
 		// 	// // analyserContext.stroke();
-		// 	// var step = Math.ceil( dataArray.length / canvasWidth );
-		// 	// var amp = canvasHeight / 2;
-		// 	// analyserContext.fillStyle = '#373A3C';
-		// 	// analyserContext.lineWidth = 2;
-		// 	// analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
+			var step = Math.ceil( dataArray.length / canvasWidth );
+			var amp = canvasHeight / 2;
+			analyserContext.fillStyle = '#373A3C';
+			analyserContext.lineWidth = 2;
+			analyserContext.clearRect(0, 0, canvasWidth, canvasHeight);
 		// 	//
 			var v = dataArray[i] / 128.0;
 		// 	// console.log(v);
